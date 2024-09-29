@@ -10,6 +10,7 @@ h1{
     color : rgb(32 56 73);
     justify-content: center;
     display: flex;
+
 }
 input
 {
@@ -54,8 +55,14 @@ button{
     border:rgb(32 56 73);
     transition-duration: 0.4s;
     position: relative;
-    left: 650px
+    left: 875px
 }
+#connexion_button
+{
+    left: 850px;
+}
+
+
 button:hover
 {
     background-color: rgb(163, 255, 94);
@@ -83,3 +90,14 @@ a
     left: 10px;
     margin: 10px 0;
 }
+.logo
+{
+    width: 120px;
+    height: 135px;
+    padding-left: 10px;
+    padding-top: 10px;
+    transition: transform .2s; /* Animation */
+}
+.logo:hover {
+    transform: scale(1.15); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
