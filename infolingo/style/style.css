@@ -48,6 +48,7 @@ label
 }
 
 button{
+    display: flex;
     background-color: rgb(122 250 250);
     font-size: medium;
     padding: 12px 28px;
@@ -55,13 +56,14 @@ button{
     border:rgb(32 56 73);
     transition-duration: 0.4s;
     position: relative;
-    left: 875px
-}
+    left: 61%;
+    justify-content: center;
+    align-items: center;
+    }
 #connexion_button
 {
-    left: 850px;
+    left: 58%;
 }
-
 
 button:hover
 {
@@ -83,12 +85,14 @@ a
 {
     background-color: rgb(32 56 73);
     border-radius: 10px;
+    padding: 5px;
 }
 .block p 
 {
     position: relative;
     left: 10px;
     margin: 10px 0;
+    color: rgb(163, 255, 94);
 }
 .logo
 {
@@ -100,4 +104,15 @@ a
 }
 .logo:hover {
     transform: scale(1.15); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-  }
+}
+.header-container
+{
+    display: flex;
+    margin-right: 10px;
+}
+.header-container h1 /* Le titre "Infolingo" n'est pas en meme ligne avec le titre en-dessous !*/
+{
+    position: absolute; 
+    left: 44%;
+    font-size: 300%;
+}
