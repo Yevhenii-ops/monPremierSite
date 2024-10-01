@@ -160,3 +160,11 @@ nav a:hover {
 .language-select-container ul li a:hover {
     color: blue;
 }
+h2
+{
+    font-family: Georgia;
+    color : rgb(32 56 73);
+    justify-content: center;
+    display: flex;
+
+}
