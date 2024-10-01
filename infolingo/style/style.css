@@ -134,3 +134,29 @@ nav a {
 nav a:hover {
     text-decoration: underline;
 }
+.language-select-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.language-select-container ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.language-select-container ul li {
+    display: inline;
+    margin-right: 15px;
+}
+
+.language-select-container ul li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.language-select-container ul li a:hover {
+    color: blue;
+}
