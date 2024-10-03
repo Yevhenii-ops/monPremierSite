@@ -1,4 +1,3 @@
-<!--Il faut rajouter plus de texte-->
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,7 +13,8 @@
     C est un langage de programmation impératif, généraliste et de bas niveau. Inventé au début des années 1970 pour réécrire Unix, le langage C est encore largement utilisé. De nombreux langages plus modernes comme C++, C#, Java et PHP ou JavaScript ont repris une syntaxe similaire au C et reprennent en partie sa logique. C offre au développeur une marge de contrôle importante sur la machine (notamment sur la gestion de la mémoire) et est de ce fait utilisé pour réaliser les « fondations » (compilateurs, interpréteurs, …) de ces langages plus modernes.
     Ces cours vous permettent d'obtenir la base sur le langage C pour vous lancer dans ce domaine de travail.
     </h2>
-    <h1>Chapitre 0 : C "Hello, World!" Programme</h1>
+    <!--Le chapitre 1 est basé sur l'article : https://www.programiz.com/c-programming/examples/print-integer-->
+    <h1>Chapitre 1 : C "Hello, World!" Programme</h1>
     <div class="block">
     <h2>Comment le programme "Hello, World!" fonctionne ?</h2>
     <ol>
@@ -26,10 +26,9 @@
         <li><p>The return 0; statement is the "Exit status" of the program. In simple terms, the program ends with this statement.</p></li>
     </ol>
     </div>
-    <!--Là y a le block de code qui débute-->
-    <!--CHOSE A FAIRE : rajouter un bouton qui copie le le ci-dessous-->
-    <!--CHOSE A FAIRE : trouver les couleurs qui iraient mieux-->
-
+    <!--CHOSE A FAIRE : rajouter un bouton qui copie le contenu du "block of code" ci-dessous--> <!--Yevhenii : "Gwenael, c'est a toi a faire parce que je connais pas javascript"-->
+    <!--CHOSE A FAIRE : trouver une meuilleure palette pour afficher le code-->
+    <!--CHOSE A FAIRE : rajouter les liens, sur lesqeuelles on peut passer en cliquant dessus, pour les termes difficiles. -->
     <div class="block_of_code">
         <p><span style="color: orange;">#include </span> <span style="color: red;"><"stdio.h"></span></p>
         <p><span style="color: purple;">int </span><span style="color: blue;">main</span><span>() {</span></p>
@@ -38,5 +37,30 @@
         <p><span style="color: purple;">return </span><span style="color: aqua;">0;</span></p>
         <p><span>}</span></p>
     </div>
-
+    <!--Le chapitre 2 est basé sur l'article : https://www.programiz.com/c-programming/examples/print-integer-->
+    <h1>Chapitre 2 : C Programme pour afficher un nombre entré par l'utilisateur</h1>
+    <div class="block_of_code">
+        <p><span style="color: orange;">#include </span> <span style="color: red;"><"stdio.h"></span></p>
+        <p><span style="color: purple;">int </span><span style="color: blue;">main</span><span>() {</span></p>
+        <p><span style="color: purple;">int</span> <span style="color: whitesmoke;">number;</span></p>
+        <p><span style="color: yellow">printf(</span><span style="color: red;">"Enter an integer: "</span><span>);</span></p>
+    </div>
+    
+    <div class="block"><h3>Output :</h3>
+    <p>Enter an integer : 25</p>
+    <p>You entered : 25</p>
+    </div>
+    <div class="block">
+    <ol>
+        <li><p>Dans le programme, variable integer (nombre entière) est déclaré</p>
+        <div class="block_of_code">
+            <p><span style="color: purple;">int </span><span style="color: blue;">main</span><span style="color: whitesmoke">() {</span></p>
+        </div>
+        </li>
+        <li><p>Ensuite, l'utilisateur est invité à saisir un nombre entière. Ce nombre est stocké dans la variable <var>number</var>.</p>
+        <div class="block_of_code"></div>
+        <!--CHOSE A FAIRE : le block de code a rajouter -->
+        </li>
+    </ol>
+    </div>
 </html>
