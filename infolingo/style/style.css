@@ -95,6 +95,14 @@ a
     margin: 10px 0;
     color: rgb(163, 255, 94);
 }
+.block h2
+{
+    color: rgb(163, 255, 94);
+}
+.block ol
+{
+    color: rgb(163, 255, 94);
+}
 .logo
 {
     width: 120px;
@@ -167,4 +175,10 @@ h2
     justify-content: center;
     display: flex;
 
+}
+.block_of_code
+{
+    background-color: rgb(32 56 73);
+    border-radius: 10px;
+    
 }

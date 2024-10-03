@@ -14,10 +14,29 @@
     C est un langage de programmation impératif, généraliste et de bas niveau. Inventé au début des années 1970 pour réécrire Unix, le langage C est encore largement utilisé. De nombreux langages plus modernes comme C++, C#, Java et PHP ou JavaScript ont repris une syntaxe similaire au C et reprennent en partie sa logique. C offre au développeur une marge de contrôle importante sur la machine (notamment sur la gestion de la mémoire) et est de ce fait utilisé pour réaliser les « fondations » (compilateurs, interpréteurs, …) de ces langages plus modernes.
     Ces cours vous permettent d'obtenir la base sur le langage C pour vous lancer dans ce domaine de travail.
     </h2>
-    <h1>Chapitre 0 : Création de votre premier programme en C</h1>
+    <h1>Chapitre 0 : C "Hello, World!" Programme</h1>
     <div class="block">
-    <p>Installez VS code. Créez un ficher "main.c". Ouvrez le terminal. Ecrivez dans le terminal "gcc main.c"</p>
-    <p>Vous obtiendrez le code binaire de votre programme. Ecrivez dans le terminal "./a.out" et voilà ! Vous avez écrit votre
-    première programme en C !</p>
+    <h2>Comment le programme "Hello, World!" fonctionne ?</h2>
+    <ol>
+        <li><p>Le #include est une commande de préprocesseur qui indique au compilateur d'inclure le contenu du fichier stdio.h (entrée et sortie standard) dans le programme</p></li>
+        <li><p>The stdio.h file contains functions such as scanf() and printf() to take input and display output respectively.</p></li>
+        <li><p>Si vous utilisez la fonction printf() sans écrire #include <stdio.h>, le programme ne compilera pas.</p></li>
+        <li><p>The execution of a C program starts from the main() function.</p></li>
+        <li><p>printf() is a library function to send formatted output to the screen. In this program, printf() displays Hello, World! text on the screen.</p></li>
+        <li><p>The return 0; statement is the "Exit status" of the program. In simple terms, the program ends with this statement.</p></li>
+    </ol>
     </div>
+    <!--Là y a le block de code qui débute-->
+    <!--CHOSE A FAIRE : rajouter un bouton qui copie le le ci-dessous-->
+    <!--CHOSE A FAIRE : trouver les couleurs qui iraient mieux-->
+
+    <div class="block_of_code">
+        <p><span style="color: orange;">#include </span> <span style="color: red;"><"stdio.h"></span></p>
+        <p><span style="color: purple;">int </span><span style="color: blue;">main</span><span>() {</span></p>
+        <p><span style="color: yellow;">// printf() affiche la chaîne à l'intérieur du guillemet</span></p>
+        <p><span style="color: green;">printf</span><span>(</span><span style="color: red;">"Hello, world!"</span><span>);</span></p>
+        <p><span style="color: purple;">return </span><span style="color: aqua;">0;</span></p>
+        <p><span>}</span></p>
+    </div>
+
 </html>
