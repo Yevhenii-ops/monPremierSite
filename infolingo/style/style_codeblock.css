@@ -1,37 +1,37 @@
-.block_of_code span.comment
+.comment
 {
     color: #B3B3B3
 }
-.block_of_code span.type
+.type
 {
     color: #0dade2;
 }
-.block_of_code span.keyword 
+.keyword 
 {
     color: #ba1414
 }
-.block_of_code span.function
+.function
 {
     color: #0dade2;
 }
-.block_of_code span.symbole
+.symbole
 {
     color: whitesmoke;
 }
-.block_of_code span.string
+.string
 {
     color: #d2d450
 }
-.block_of_code span.value
+.value
 {
     color: #c36706
 }
-.block_of_code span.include /* Par exemple : #include "stdio.h"*/
+.include /* Par exemple : #include "stdio.h"*/
 {
     color: orange;
 }
 
-.block_of_code span.declaration /* Par exemple : "int main", "float rest"*/
+.declaration /* Par exemple : "int main", "float rest"*/
 {
     color: #0dade2;
 }
