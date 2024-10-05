@@ -18,33 +18,38 @@
     <div class="block">
     <h2>Comment le programme "Hello, World!" fonctionne ?</h2>
     <ol>
-        <li><p>Le #include est une commande de préprocesseur qui indique au compilateur d'inclure le contenu du fichier stdio.h (entrée et sortie standard) dans le programme</p></li>
-        <li><p>The stdio.h file contains functions such as scanf() and printf() to take input and display output respectively.</p></li>
-        <li><p>Si vous utilisez la fonction printf() sans écrire #include <stdio.h>, le programme ne compilera pas.</p></li>
-        <li><p>The execution of a C program starts from the main() function.</p></li>
-        <li><p>printf() is a library function to send formatted output to the screen. In this program, printf() displays Hello, World! text on the screen.</p></li>
-        <li><p>The return 0; statement is the "Exit status" of the program. In simple terms, the program ends with this statement.</p></li>
+        <li><p>Le <span class="frame">#include</span> est une commande de préprocesseur qui indique au compilateur d'inclure le contenu du fichier <span class="frame">stdio.h</span> (entrée et sortie standard) dans le programme</p></li>
+        <li><p>The <span class="frame">stdio.h</span> file contains functions such as <span class="frame">scanf()</span> and <span class="frame">printf()</span> to take input and display output respectively.</p></li>
+        <li><p>Si vous utilisez la fonction <span class="frame">printf()</span> sans écrire <span class="frame">#include</span> <stdio.h>, le programme ne compilera pas.</p></li>
+        <li><p>The execution of a C program starts from the <span class="frame">main()</span> function.</p></li>
+        <li><p><span class="frame">printf()</span> is a library function to send formatted output to the screen. In this program, <span class="frame">printf()</span> displays <span class="frame">Hello, World!</span> text on the screen.</p></li>
+        <li><p>The <span class="frame">return 0;</span> statement is the "Exit status" of the program. In simple terms, the program ends with this statement.</p></li>
     </ol>
     </div>
     <!--CHOSE A FAIRE : rajouter un bouton qui copie le contenu du "block of code" ci-dessous--> <!--Yevhenii : "Gwenael, c'est a toi a faire parce que je connais pas javascript"-->
     <!--CHOSE A FAIRE : trouver une meuilleure palette pour afficher le code-->
     <!--CHOSE A FAIRE : rajouter les liens, sur lesqeuelles on peut passer en cliquant dessus, pour les termes difficiles. -->
     <div class="block_of_code">
-        <p><span style="color: orange;">#include </span> <span style="color: red;"><"stdio.h"></span></p>
-        <p><span style="color: purple;">int </span><span style="color: blue;">main</span><span>() {</span></p>
-        <p><span style="color: yellow;">// printf() affiche la chaîne à l'intérieur du guillemet</span></p>
-        <p><span style="color: green;">printf</span><span>(</span><span style="color: red;">"Hello, world!"</span><span>);</span></p>
-        <p><span style="color: purple;">return </span><span style="color: aqua;">0;</span></p>
+        <p><span class="include">#include "stdio.h"</span></p>
+        <p><span class="declaration">int main<span class="symbole">() {</span></p>
+        <p><span class="comment">&emsp;// printf() affiche la chaîne à l'intérieur du guillemet</span></p>
+        <p><span class="function">&emsp;printf</span><span>(</span><span class="string">"Hello, world!"</span><span class="symbole">);</span></p>
+        <p><span class="keyword">return </span><span class="value">0</span><span class="symbole">;</span></p>
         <p><span>}</span></p>
     </div>
-    <!--Le chapitre 2 est basé sur l'article : https://www.programiz.com/c-programming/examples/print-integer-->
+    <!--Le chapitre 2 est basé sur l'article : https://www.programiz.com/c-programming/examples/print-integer -->
     <h1>Chapitre 2 : C Programme pour afficher un nombre entré par l'utilisateur</h1>
     <div class="block_of_code">
-        <p><span style="color: orange;">#include </span> <span style="color: red;"><"stdio.h"></span></p>
-        <p><span style="color: purple;">int </span><span style="color: blue;">main</span><span>() {</span></p>
-        <p><span style="color: purple;">int</span> <span style="color: whitesmoke;">number;</span></p>
-        <p><span style="color: yellow">printf(</span><span style="color: red;">"Enter an integer: "</span><span>);</span></p>
-    </div>
+        <p><span class="include">#include "stdio.h"</span></p>
+        <p><span class="declaration">int main</span><span class="symbole">() {</span></p>
+        <p><span class="declaration">&emsp;int number</span></p>
+        <p><span class="function">&emsp;printf<span class="symbole">(</span><span class="string">"Enter an integer: "</span><span class="symbole">);</span></p>
+        <p><span class="comment">&emsp;// lit et stocke l'entrée</span></p>
+        <p><span class="function">&emsp;scanf</span><span class="symbole">(</span><span class="string">"%d"</span><span class="symbole">,</span> <span class="declaration">number</span><span class="symbole">);</span></p>
+        <p></p>
+        <p><span class="keyword">return</span> <span class="value">0</span><span class="symbole">;</span></p>
+        <p><span class="symbole">}</span></p>
+</div>
     
     <div class="block"><h3>Output :</h3>
     <p>Enter an integer : 25</p>
