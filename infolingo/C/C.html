@@ -18,12 +18,12 @@
     <div class="block">
     <h2>Comment le programme "Hello, World!" fonctionne ?</h2>
     <ol>
-        <li><p>Le <span class="frame">#include</span> est une commande de préprocesseur qui indique au compilateur d'inclure le contenu du fichier <span class="frame">stdio.h</span> (entrée et sortie standard) dans le programme</p></li>
-        <li><p>The <span class="frame">stdio.h</span> file contains functions such as <span class="frame">scanf()</span> and <span class="frame">printf()</span> to take input and display output respectively.</p></li>
-        <li><p>Si vous utilisez la fonction <span class="frame">printf()</span> sans écrire <span class="frame">#include</span> <stdio.h>, le programme ne compilera pas.</p></li>
+        <li><p>Le <span class="include">#include</span> est une commande de préprocesseur qui indique au compilateur d'inclure le contenu du fichier <span class="include">stdio.h</span> (entrée et sortie standard) dans le programme</p></li>
+        <li><p>The <span class="include">stdio.h</span> file contains functions such as <span class="function">scanf()</span> and <span class="function">printf()</span> to take input and display output respectively.</p></li>
+        <li><p>Si vous utilisez la fonction <span class="function">printf()</span> sans écrire <span class="include">#include</span> <stdio.h>, le programme ne compilera pas.</p></li>
         <li><p>The execution of a C program starts from the <span class="frame">main()</span> function.</p></li>
-        <li><p><span class="frame">printf()</span> is a library function to send formatted output to the screen. In this program, <span class="frame">printf()</span> displays <span class="frame">Hello, World!</span> text on the screen.</p></li>
-        <li><p>The <span class="frame">return 0;</span> statement is the "Exit status" of the program. In simple terms, the program ends with this statement.</p></li>
+        <li><p><span class="function">printf()</span> is a library function to send formatted output to the screen. In this program, <span class="function">printf()</span> displays <span class="string">Hello, World!</span> text on the screen.</p></li>
+        <li><p>The <span class="keyword">return</span> <span class="value">0</span><span class="symbole">;</span> statement is the "Exit status" of the program. In simple terms, the program ends with this statement.</p></li>
     </ol>
     </div>
     <!--CHOSE A FAIRE : rajouter un bouton qui copie le contenu du "block of code" ci-dessous--> <!--Yevhenii : "Gwenael, c'est a toi a faire parce que je connais pas javascript"-->
@@ -45,7 +45,9 @@
         <p><span class="declaration">&emsp;int number</span></p>
         <p><span class="function">&emsp;printf<span class="symbole">(</span><span class="string">"Enter an integer: "</span><span class="symbole">);</span></p>
         <p><span class="comment">&emsp;// lit et stocke l'entrée</span></p>
-        <p><span class="function">&emsp;scanf</span><span class="symbole">(</span><span class="string">"%d"</span><span class="symbole">,</span> <span class="declaration">number</span><span class="symbole">);</span></p>
+        <p><span class="function">&emsp;scanf</span><span class="symbole">(</span><span class="string">"%d"</span><span class="symbole">,</span> <span class="declaration">&number</span><span class="symbole">);</span></p>
+        <p><span class="function">&emsp;print</span><span class="symbole">(</span><span class="string">"You entered: %d"<span class="symbole">,</span> <span class="declaration">number</span></span><span class="symbole">);</span></p>
+        
         <p></p>
         <p><span class="keyword">return</span> <span class="value">0</span><span class="symbole">;</span></p>
         <p><span class="symbole">}</span></p>
@@ -59,13 +61,18 @@
     <ol>
         <li><p>Dans le programme, variable integer (nombre entière) est déclaré</p>
         <div class="block_of_code">
-            <p><span style="color: purple;">int </span><span style="color: blue;">main</span><span style="color: whitesmoke">() {</span></p>
+            <p><span class="declaration">int number</span><span class="symbole">;</span></p>
         </div>
         </li>
-        <li><p>Ensuite, l'utilisateur est invité à saisir un nombre entière. Ce nombre est stocké dans la variable <var>number</var>.</p>
+        <li><p>Ensuite, l'utilisateur est invité à saisir un nombre entière. Ce nombre est stocké dans la variable <span class="declaration">number</span>.</p>
         <div class="block_of_code"></div>
-        <!--CHOSE A FAIRE : le block de code a rajouter -->
+            <p><span class="function">printf</span><span class="symbole">(</span><span class="string">"Enter the integer: "</span><span class="symbole">);</span></p>
+            <p><span class="function">scanf</span><span class="symbole">(</span><span class="string">"%d"</span><span class="symbole">,</span> <span class="declaration">number</span><span class="symbole">);</span></p>
         </li>
+        <li><p>Enfin, la valeur stockée dans number est affichée à l'écran à l'aide de printf().</p></li>
+        <div class="block_of_code">
+            <p><span></span></p>
+        </div>
     </ol>
     </div>
 </html>
