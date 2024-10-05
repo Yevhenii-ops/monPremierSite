@@ -200,3 +200,7 @@ h2
     font-family: Monaco, MonacoRegular, "Courier New", monospace;
     font-size: large;
 }
+ol li p span
+{
+    font-family:  Monaco, MonacoRegular, "Courier New", monospace;;
+}
