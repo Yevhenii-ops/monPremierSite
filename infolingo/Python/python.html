@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Python</title>
+        <link rel="stylesheet" href="../style/style.css">
+    </head>
+    <body>
+        <div class="header-container">
+            <a href="../accueil.html"><img src="../Images/logo.png" alt="logo" class="logo"></a><h1>Infolingo</h1>
+        </div>
+        <h1>Python</h1>
+        <h2>
+            Python est un langage de programmation interprété, multiparadigme et multiplateformes. Il favorise la programmation impérative structurée, fonctionnelle et orientée objet. Il est doté d'un typage dynamique fort, d'une gestion automatique de la mémoire par ramasse-miettes et d'un système de gestion d'exceptions ; il est ainsi similaire à Perl, Ruby, Scheme, Smalltalk et Tcl.
+        </h2>
+        <!-- Chapitre 1 est basé sur https://www.programiz.com/python-programming/variables-constants-literals -->
+        <h1>Chapitre 1 : Votre premier programme Python</h1>
+        <div class="block">
+        <p>
+            Le programme suivant affiche Hello, World ! sur l'écran.</p>
+            <div class="block_of_code">
+                <p><span class="function">print</span><span class="symbole">(</span><span class="string">"Hello, World!"</span><span class="symbole">)</span></p>
+            </div>
+            <p>Félicitations pour avoir écrit votre premier programme Python. Voyons maintenant comment fonctionne le programme ci-dessus.</p>
+        </div>
+        <div class="block">
+            <ol>
+                <li><p>En Python, tout ce qui se trouve dans <span class="function">print</span> est affiché à l'écran.</p></li>
+                <li><p>Nous pouvons également utiliser des guillemets simples pour imprimer du texte à l'écran. Par exemple : </p></li>
+                <div class="block_of_code"><p><span class="function">print</span><span class="symbole">(</span><span class="string">'Hello, World!'</span><span class="symbole">)</span></p></div>
+                <p>Pour être cohérent, nous utiliserons des guillemets doubles tout au long des tutoriaux.</p>
+            </ol>
+        </div>
+        <h1>Chapitre 2 : Variables et littéraux en Python</h1>
+        <!-- Chapitre 2 est basé sur https://www.programiz.com/python-programming/variables-constants-literals -->
+        <div class="block">
+            <h2>Variables en Python</h2>
+            <ol>
+                <li><p>En programmation, une variable est un conteneur (zone de stockage) destiné à contenir des données. Par exemple :</p></li>
+                <div class="block_of_code">
+                    <p><span class="declaration">number</span> <span class="symbole">=</span> <span class="value">10</span></p>
+                </div>
+                <p>Ici, le nombre est une variable stockant la valeur <span class="value">10</span>.</p>
+                <li><p>Comme nous pouvons le voir dans l'exemple ci-dessus, nous utilisons l'opérateur d'affectation <span class="symbole">=</span> pour attribuer une valeur à une variable.</p></li>
+            </ol>
+        </div>
+        <div class="block_of_code">
+            <p><span class="comment"># assign value to site_name variable</span></p>
+            <p><span class="declaration">&emsp;site_name</span> <span class="symbole">=</span> <span class="string">'Infolingo'</span></p>
+            <p><span class="function">&emsp;print</span><span class="symbole">(</span><span class="declaration">site_name</span><span class="symbole">);</span></p>
+            <p><span class="comment"># Output: Infolingo</span></p>                    
+        </div>
+        <div class="block">
+            <h3>Sortie :</h3>
+            <p>Infolingo</p>
+        </div>
+        <br>
+        <div class="block">
+            <h2>Assigning multiple values to multiple variables</h2>
+            <div class="block_of_code">
+                <p><span class="declaration">a</span><span class="symbole">,</span> <span class="declaration">b</span><span class="symbole">,</span> <span class="declaration">c</span> <span class="symbole">=</span> <span class="value">5</span><span class="symbole">,</span> <span class="value">3.2</span><span class="symbole">,</span> <span class="string">'Hello'</span></p>
+                <p><span class="function">print</span><span class="symbole">(</span><span class="declaration">a</span><span class="symbole">);</span> <span class="comment"># prints 5</span></p>
+                <p><span class="function">print</span><span class="symbole">(</span><span class="declaration">b</span><span class="symbole">);</span> <span class="comment"># prints 3.2</span></p>
+                <p><span class="function">print</span><span class="symbole">(</span><span class="declaration">c</span><span class="symbole">);</span> <span class="comment"># prints Hello</span></p>
+            </div>
+        </div>
+    </body>
+</html>
