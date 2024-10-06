@@ -202,5 +202,9 @@ h2
 }
 ol li p span
 {
-    font-family:  Monaco, MonacoRegular, "Courier New", monospace;;
+    font-family:  Monaco, MonacoRegular, "Courier New", monospace;
+}
+ol p span
+{
+    font-family:  Monaco, MonacoRegular, "Courier New", monospace;
 }
