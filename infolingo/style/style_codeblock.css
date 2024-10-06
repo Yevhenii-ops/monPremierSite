@@ -1,0 +1,37 @@
+.comment
+{
+    color: #B3B3B3
+}
+.type
+{
+    color: #0dade2;
+}
+.keyword 
+{
+    color: #ba1414
+}
+.function
+{
+    color: #0dade2;
+}
+.symbole
+{
+    color: whitesmoke;
+}
+.string
+{
+    color: #d2d450
+}
+.value
+{
+    color: #c36706
+}
+.include /* Par exemple : #include "stdio.h"*/
+{
+    color: orange;
+}
+
+.declaration /* Par exemple : "int main", "float rest"*/
+{
+    color: #0dade2;
+}
