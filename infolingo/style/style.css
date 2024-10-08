@@ -97,6 +97,10 @@ a
     margin: 10px 0;
     color: rgb(163, 255, 94);
 }
+.block p span
+{
+    font-family: Monaco, MonacoRegular, "Courier New", monospace;
+}
 .block h2
 {
     color: rgb(163, 255, 94);
