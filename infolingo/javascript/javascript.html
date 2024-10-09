@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>JavaScript</title>
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+<body> 
+    <div class="header-container">
+        <a href="../accueil.html"><img src="../Images/logo.png" alt="logo" class="logo"></a>
+        <h1>Infolingo</h1>
+    </div>
+    <h1>Le langage JavaScript</h1> 
+    <h2>
+    JavaScript est un langage de programmation de haut niveau principalement utilisé pour rendre les pages web interactives. Créé en 1995, il est devenu l'un des piliers du développement web, avec HTML et CSS. JavaScript permet de manipuler les éléments d'une page web, de gérer les événements utilisateurs et de créer des applications web dynamiques.
+    Cette introduction vous permettra de comprendre les bases de JavaScript et d'implémenter des fonctionnalités simples sur une page web.
+    </h2>
+    <h1>Chapitre 1 : JavaScript "Hello, World!"</h1>
+    <div class="block">
+        <h2>Comment fonctionne le programme "Hello, World!" en JavaScript ?</h2>
+        <ol>
+            <li><p>Le code JavaScript peut être intégré directement dans une page HTML à l'intérieur de balises <span class="keyword">&lt;script&gt;</span>.</p></li>
+            <li><p>La fonction <span class="function">console.log()</span> est utilisée pour afficher des messages dans la console du navigateur.</p></li>
+            <li><p>Pour afficher un message à l'utilisateur, vous pouvez utiliser la fonction <span class="function">alert()</span>, qui affiche une boîte de dialogue.</p></li>
+        </ol>
+    </div>
+    <div class="block_of_code">
+        <p><span class="keyword">&lt;script&gt;</span></p>
+        <p>&emsp;<span class="function">alert</span><span class="symbole">(</span><span class="string">"Hello, World!"</span><span class="symbole">);</span></p>
+        <p>&emsp;<span class="function">console.log</span><span class="symbole">(</span><span class="string">"Hello, World!"</span><span class="symbole">);</span></p>
+        <p><span class="keyword">&lt;/script&gt;</span></p>
+    </div>
+    <h1>Chapitre 2 : JavaScript Variables</h1>
+    <div class="block">
+        <h2>Déclaration de variables en JavaScript</h2>
+        <ol>
+            <li><p>En JavaScript, vous pouvez déclarer des variables avec <span class="keyword">let</span>, <span class="keyword">const</span> ou <span class="keyword">var</span>.</p></li>
+            <li><p><span class="keyword">let</span> est utilisé pour déclarer des variables qui peuvent changer de valeur.</p></li>
+            <li><p><span class="keyword">const</span> est utilisé pour déclarer des constantes, c'est-à-dire des variables dont la valeur ne changera jamais.</p></li>
+            <li><p><span class="keyword">var</span> est une ancienne façon de déclarer des variables, mais elle est moins utilisée aujourd'hui car elle peut causer des comportements imprévisibles.</p></li>
+        </ol>
+    </div>
+    <div class="block_of_code">
+        <p><span class="keyword">&lt;script&gt;</span></p>
+        <p>&emsp;<span class="keyword">let</span> name = <span class="string">"Alice"</span><span class="symbole">;</span></p>
+        <p>&emsp;<span class="keyword">const</span> age = <span class="value">25</span><span class="symbole">;</span></p>
+        <p>&emsp;<span class="function">console.log</span><span class="symbole">(</span><span class="string">"Nom : "</span> + name<span class="symbole">);</span></p>
+        <p>&emsp;<span class="function">console.log</span><span class="symbole">(</span><span class="string">"Âge : "</span> + age<span class="symbole">);</span></p>
+        <p><span class="keyword">&lt;/script&gt;</span></p>
+    </div>
+    <h1>Chapitre 3 : JavaScript Conditions</h1>
+    <div class="block">
+        <h2>Utilisation des conditions en JavaScript</h2>
+        <ol>
+            <li><p>Les conditions permettent de tester des expressions et d'exécuter du code en fonction du résultat.</p></li>
+            <li><p>En JavaScript, les conditions sont définies avec <span class="keyword">if</span>, <span class="keyword">else if</span> et <span class="keyword">else</span>.</p></li>
+        </ol>
+    </div>
+    <div class="block_of_code">
+        <p><span class="keyword">&lt;script&gt;</span></p>
+        <p>&emsp;<span class="keyword">let</span> age = <span class="value">18</span><span class="symbole">;</span></p>
+        <p>&emsp;<span class="keyword">if</span> (age &gt;= <span class="value">18</span>) {</p>
+        <p>&emsp;&emsp;<span class="function">console.log</span><span class="symbole">(</span><span class="string">"Vous êtes majeur"</span><span class="symbole">);</span></p>
+        <p>&emsp;} <span class="keyword">else</span> {</p>
+        <p>&emsp;&emsp;<span class="function">console.log</span><span class="symbole">(</span><span class="string">"Vous êtes mineur"</span><span class="symbole">);</span></p>
+        <p>&emsp;}</p>
+        <p><span class="keyword">&lt;/script&gt;</span></p>
+    </div>
+    <div class="block">
+        <h3>Sortie :</h3>
+        <p>Si l'âge est 18 ou plus, "Vous êtes majeur" s'affiche dans la console.</p>
+    </div>
+    <div class="language-select-container">
+        <ul>
+            <li><a href="exercices.html">Les exercices sur JavaScript</a></li>
+        </ul>
+    </div>
+</body>
+</html>
