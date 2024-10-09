@@ -317,11 +317,11 @@ ol p span
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .post {
-    background: #f9f9f9;
+    background: rgb(163, 255, 94);
     margin-bottom: 20px;
     padding: 15px;
     border-radius: 5px;
-    border: 1px solid #ddd;
+    border: 1px solid rgb(163, 255, 94);
 }
 .post h3 {
     margin: 0 0 10px 0;
@@ -334,7 +334,7 @@ ol p span
 .form {
     margin-top: 30px;
     padding: 15px;
-    background: #f0f0f0;
+    background: rgb(163, 255, 94);
     border-radius: 5px;
 }
 .form input, .form textarea {
@@ -345,14 +345,14 @@ ol p span
     border: 1px solid #ccc;
 }
 .form input[type="submit"] {
-    background-color: #28a745;
-    color: white;
+    background-color: rgb(163, 255, 94);
+    color: rgb(4, 153, 54);
     border: none;
     cursor: pointer;
     padding: 10px 15px;
 }
 .form input[type="submit"]:hover {
-    background-color: #218838;
+    background-color: rgb(163, 255, 94);
 }
 .reply {
     margin-left: 20px;
@@ -381,5 +381,5 @@ ol p span
     margin: 5px 0;
 }
 .social-buttons a:hover {
-    opacity: 0.8; /* Légère transparence au survol */
+    opacity: 0.8; 
 }
