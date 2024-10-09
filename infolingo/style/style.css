@@ -76,7 +76,8 @@ p
 {
     font-size: larger;
     color: rgb(235, 233, 233);
-    font-family: Georgia, serif;
+    font-family: 'Arial', sans-serif;
+
 }
 a
 {
@@ -95,6 +96,10 @@ a
     left: 10px;
     margin: 10px 0;
     color: rgb(163, 255, 94);
+}
+.block p span
+{
+    font-family: Monaco, MonacoRegular, "Courier New", monospace;
 }
 .block h2
 {
@@ -202,6 +207,7 @@ h2
 }
 ol li p span
 {
+<<<<<<< HEAD
     font-family:  Monaco, MonacoRegular, "Courier New", monospace;;
 }
 .profile-container {
@@ -298,4 +304,11 @@ ol li p span
 #déconnexion_button
 {
     left: 40%;
+=======
+    font-family:  Monaco, MonacoRegular, "Courier New", monospace;
+}
+ol p span
+{
+    font-family:  Monaco, MonacoRegular, "Courier New", monospace;
+>>>>>>> a7419555d56a50ad749d8fab6d0ae00a61fa5ab1
 }

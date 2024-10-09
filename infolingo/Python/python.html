@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Python</title>
+        <link rel="stylesheet" href="../style/style.css">
+    </head>
+    <body>
+        <div class="header-container">
+            <a href="../accueil.html"><img src="../Images/logo.png" alt="logo" class="logo"></a><h1>Infolingo</h1>
+        </div>
+        <h1>Python</h1>
+        <h2>
+            Python est un langage de programmation interprété, multiparadigme et multiplateformes. Il favorise la programmation impérative structurée, fonctionnelle et orientée objet. Il est doté d'un typage dynamique fort, d'une gestion automatique de la mémoire par ramasse-miettes et d'un système de gestion d'exceptions ; il est ainsi similaire à Perl, Ruby, Scheme, Smalltalk et Tcl.
+        </h2>
+        <!-- Chapitre 1 est basé sur https://www.programiz.com/python-programming/variables-constants-literals -->
+        <h1>Chapitre 1 : Votre premier programme Python</h1>
+        <div class="block">
+            <p>Le programme suivant affiche Hello, World ! sur l'écran.</p>
+            <div class="block_of_code">
+                <p><span class="function">print</span><span class="symbole">(</span><span class="string">"Hello, World!"</span><span class="symbole">)</span></p>
+            </div>
+            <p>Félicitations pour avoir écrit votre premier programme Python. Voyons maintenant comment fonctionne le programme ci-dessus.</p>
+        </div>
+        <div class="block">
+            <ol>
+                <li><p>En Python, tout ce qui se trouve dans <span class="function">print</span> est affiché à l'écran.</p></li>
+                <li><p>Nous pouvons également utiliser des guillemets simples pour imprimer du texte à l'écran. Par exemple :</p></li>
+                <div class="block_of_code">
+                    <p><span class="function">print</span><span class="symbole">(</span><span class="string">'Hello, World!'</span><span class="symbole">)</span></p>
+                </div>
+                <p>Pour être cohérent, nous utiliserons des guillemets doubles tout au long des tutoriaux.</p>
+            </ol>
+        </div>
+        <h1>Chapitre 2 : Variables et littéraux en Python</h1>
+        <!-- Chapitre 2 est basé sur https://www.programiz.com/python-programming/variables-constants-literals -->
+        <div class="block">
+            <h2>Variables en Python</h2>
+            <ol>
+                <li><p>En programmation, une variable est un conteneur (zone de stockage) destiné à contenir des données. Par exemple :</p></li>
+                <div class="block_of_code">
+                    <p><span class="declaration">number</span> <span class="symbole">=</span> <span class="value">10</span></p>
+                </div>
+                <p>Ici, le nombre est une variable stockant la valeur <span class="value">10</span>.</p>
+                <li><p>Comme nous pouvons le voir dans l'exemple ci-dessus, nous utilisons l'opérateur d'affectation <span class="symbole">=</span> pour attribuer une valeur à une variable.</p></li>
+            </ol>
+        </div>
+        <div class="block_of_code">
+            <p><span class="comment"># assigner une valeur à la variable site_name</span></p>
+            <p><span class="declaration">&emsp;site_name</span> <span class="symbole">=</span> <span class="string">'Infolingo'</span></p>
+            <p><span class="function">&emsp;print</span><span class="symbole">(</span><span class="declaration">site_name</span><span class="symbole">)</span></p>
+            <p><span class="comment"># Output: Infolingo</span></p>                    
+        </div>
+        <div class="block">
+            <h3>Sortie :</h3>
+            <p>Infolingo</p>
+        </div>
+        <br>
+        <div class="block">
+            <h2>Attribuer plusieurs valeurs à plusieurs variables</h2>
+            <div class="block_of_code">
+                <p><span class="declaration">a</span><span class="symbole">,</span> <span class="declaration">b</span><span class="symbole">,</span> <span class="declaration">c</span> <span class="symbole">=</span> <span class="value">5</span><span class="symbole">,</span> <span class="value">3.2</span><span class="symbole">,</span> <span class="string">'Hello'</span></p>
+                <p><span class="function">print</span><span class="symbole">(</span><span class="declaration">a</span><span class="symbole">)</span> <span class="comment"># affiche 5</span></p>
+                <p><span class="function">print</span><span class="symbole">(</span><span class="declaration">b</span><span class="symbole">)</span> <span class="comment"># affiche 3.2</span></p>
+                <p><span class="function">print</span><span class="symbole">(</span><span class="declaration">c</span><span class="symbole">)</span> <span class="comment"># affiche Hello</span></p>
+            </div>
+        </div>
+        <h1>Chapitre 3 : Instructions conditionnelles if...else en Python</h1>
+        <div class="block">
+            <p>Les instructions conditionnelles permettent de prendre des décisions en fonction des conditions spécifiées. En Python, elles s'écrivent principalement avec les instructions <span class="function">if</span>, <span class="function">elif</span>, et <span class="function">else</span>.</p>
+            <p>La syntaxe de base est la suivante :</p>
+            <div class="block_of_code">
+                <p><span class="function">if</span> <span class="condition">(condition)</span><span class="symbole">:</span></p>
+                <p><span class="comment">&emsp;# instructions si la condition est vraie</span></p>
+                <p><span class="function">elif</span> <span class="condition">(condition)</span></span><span class="symbole">:</span></p>
+                <p><span class="comment">&emsp;# instructions si la première condition est fausse et celle-ci est vraie</span></p>
+                <p><span class="function">else</span><span class="symbole">:</span></p>
+                <p><span class="comment">&emsp;# instructions si toutes les conditions précédentes sont fausses</span></p>
+            </div>
+            <p>Le bloc <span class="function">if</span> s'exécute si la condition est vraie. Sinon, le code passe à l'instruction <span class="function">elif</span> (si présente) ou <span class="function">else</span>.</p>
+        </div>
+        <div class="block">
+            <h2>Conditions booléennes</h2>
+            <p>Les conditions peuvent être basées sur des expressions qui se résolvent en <span class="value">True</span> ou <span class="value">False</span>. Par exemple :</p>
+            <div class="block_of_code">
+                <p><span class="declaration">x</span> <span class="symbole">=</span> <span class="value">10</span></p>
+                <p><span class="function">if</span> <span class="condition">(</span><span class="declaration">x</span> <span class="symbole">></span> <span class="value">5</span><span class="condition">)<span class="symbole">:<span></p>
+                <p><span class="function">&emsp;print</span><span class="symbole">(</span><span class="string">"x est supérieur à 5"</span><span class="symbole">)</span></p>
+            </div>
+        </div>
+        <div class="block">
+            <h2>Syntaxe de l'instruction if</h2>
+            <p>L'instruction <span class="function">if</span> en Python permet d'exécuter un bloc de code seulement si une condition est vraie. Par exemple :</p>
+            <div class="block_of_code">
+                <p><span class="declaration">num</span> <span class="symbole">=</span> <span class="value">3</span></p>
+                <p><span class="function">if</span> <span class="condition">(</span><span class="declaration">num</span> <span class="symbole">> <span class="value">0</span></span><span class="condition">)</span><span class="symbole">:</span></p>
+                <p><span class="function">&emsp;print</span><span class="symbole">(</span><span class="string">"Nombre positif"</span><span class="symbole">)</span></p>
+                <p><span class="comment"># Output: Nombre positif</span></p>
+            </div>
+            <p>Le code <span class="function">print("Nombre positif")</span> est exécuté uniquement si <span class="declaration">num</span> est supérieur à 0.</p>
+        </div>
+        <br>
+        <div class="block">
+            <h2>Instruction if...else</h2>
+            <p>L'instruction <span class="function">if...else</span> permet de définir un bloc de code à exécuter si la condition est fausse. Exemple :</p>
+            <div class="block_of_code">
+                <p><span class="declaration">num</span> <span class="symbole">=</span> <span class="value">-1</span></p>
+                <p><span class="function">if</span> <span class="condition">(</span><span class="declaration">num</span> <span class="symbole">>=</span> <span class="value">0</span><span class="condition">)</span><span class="symbole">:</span></p>
+                <p><span class="function">&emsp;print</span><span class="symbole">(</span><span class="string">"Nombre positif ou zéro"</span><span class="symbole">)</span></p>
+                <p><span class="function">else</span><span class="symbole">:</span></p>
+                <p><span class="function">&emsp;print</span><span class="symbole">(</span><span class="string">"Nombre négatif"</span><span class="symbole">)</span></p>
+                <p><span class="comment"># Output: Nombre négatif</span></p>
+            </div>
+            <p>Dans cet exemple, si la valeur de <span class="declaration">num</span> est inférieure à 0, le code du bloc <span class="function">else</span> est exécuté.</p>
+        </div>
+    </body>
+</html>
