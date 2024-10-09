@@ -364,3 +364,22 @@ ol p span
     margin: 5px 0;
     font-size: 14px;
     color: #666;
+}
+.social-buttons {
+    margin-top: 10px;
+}
+.social-buttons a {
+    text-decoration: none;
+    margin: 0 10px;
+    display: inline-block;
+}
+.social-buttons img {
+    width: 40px;
+    height: 40px;
+}
+.footer-content p {
+    margin: 5px 0;
+}
+.social-buttons a:hover {
+    opacity: 0.8; /* Légère transparence au survol */
+}
