@@ -207,7 +207,6 @@ h2
 }
 ol li p span
 {
-<<<<<<< HEAD
     font-family:  Monaco, MonacoRegular, "Courier New", monospace;;
 }
 .profile-container {
@@ -304,11 +303,64 @@ ol li p span
 #déconnexion_button
 {
     left: 40%;
-=======
     font-family:  Monaco, MonacoRegular, "Courier New", monospace;
 }
 ol p span
 {
     font-family:  Monaco, MonacoRegular, "Courier New", monospace;
->>>>>>> a7419555d56a50ad749d8fab6d0ae00a61fa5ab1
 }
+.container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.post {
+    background: #f9f9f9;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+.post h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+.post p {
+    margin: 0;
+    color: #555;
+}
+.form {
+    margin-top: 30px;
+    padding: 15px;
+    background: #f0f0f0;
+    border-radius: 5px;
+}
+.form input, .form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.form input[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+}
+.form input[type="submit"]:hover {
+    background-color: #218838;
+}
+.reply {
+    margin-left: 20px;
+    margin-top: 10px;
+    padding-left: 10px;
+    border-left: 2px solid #ddd;
+}
+.reply p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
