@@ -383,3 +383,7 @@ ol p span
 .social-buttons a:hover {
     opacity: 0.8; 
 }
+.header-container h1{
+position: relative;
+left: 28%;
+}
