@@ -3,11 +3,11 @@
     <head>
         <meta charset="utf-8">
         <title>accueil</title>
-        <link rel="stylesheet" href="style/style.css">
+        <link rel="stylesheet" href="../style/style.css">
     </head>
     <body>
         <div class="header-container">
-            <a href="accueil.html"><img src="Images/logo.png" alt="logo" class="logo"></a><h1>Infolingo</h1>
+            <a href="accueil.html"><img src="../Images/logo.png" alt="logo" class="logo"></a><h1>Infolingo</h1>
         </div>
         <nav>
             <a href="connexion.html">Connexion</a>
