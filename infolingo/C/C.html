@@ -5,6 +5,7 @@
         <title>C</title>
         <link rel="stylesheet" href="../style/style.css">
     </head>
+    <body> 
     <div class="header-container">
         <a href="../accueil.html"><img src="../Images/logo.png" alt="logo" class="logo"></a><h1>Infolingo</h1>
     </div>
@@ -18,49 +19,96 @@
     <div class="block">
     <h2>Comment le programme "Hello, World!" fonctionne ?</h2>
     <ol>
-        <li><p>Le #include est une commande de préprocesseur qui indique au compilateur d'inclure le contenu du fichier stdio.h (entrée et sortie standard) dans le programme</p></li>
-        <li><p>The stdio.h file contains functions such as scanf() and printf() to take input and display output respectively.</p></li>
-        <li><p>Si vous utilisez la fonction printf() sans écrire #include <stdio.h>, le programme ne compilera pas.</p></li>
-        <li><p>The execution of a C program starts from the main() function.</p></li>
-        <li><p>printf() is a library function to send formatted output to the screen. In this program, printf() displays Hello, World! text on the screen.</p></li>
-        <li><p>The return 0; statement is the "Exit status" of the program. In simple terms, the program ends with this statement.</p></li>
+        <li><p>Le <span class="include">#include</span> est une commande de préprocesseur qui indique au compilateur d'inclure le contenu du fichier <span class="include">stdio.h</span> (entrée et sortie standard) dans le programme</p></li>
+        <li><p>Le fichier <span class="include">stdio.h</span> contient des fonctions telles que <span class="function">scanf</span> et <span class="function">printf</span> pour recevoir des entrées et afficher des sorties respectivement.</p></li>
+        <li><p>Si vous utilisez la fonction <span class="function">printf</span> sans écrire <span class="include">#include</span> <stdio.h>, le programme ne compilera pas.</p></li>
+        <li><p>L'exécution d'un programme C commence par la fonction <span class="frame">main</span>.</p></li>
+        <li><p><span class="function">printf</span> est une fonction de bibliothèque pour envoyer une sortie formatée à l'écran. Dans ce programme, <span class="function">printf</span> affiche le texte <span class="string">Hello, World!</span> à l'écran.</p></li>
+        <li><p>L'instruction <span class="keyword">return</span> <span class="value">0</span><span class="symbole">;</span> représente le "code de sortie" du programme. En termes simples, le programme se termine avec cette instruction.</p></li>  
     </ol>
     </div>
     <!--CHOSE A FAIRE : rajouter un bouton qui copie le contenu du "block of code" ci-dessous--> <!--Yevhenii : "Gwenael, c'est a toi a faire parce que je connais pas javascript"-->
-    <!--CHOSE A FAIRE : trouver une meuilleure palette pour afficher le code-->
     <!--CHOSE A FAIRE : rajouter les liens, sur lesqeuelles on peut passer en cliquant dessus, pour les termes difficiles. -->
     <div class="block_of_code">
-        <p><span style="color: orange;">#include </span> <span style="color: red;"><"stdio.h"></span></p>
-        <p><span style="color: purple;">int </span><span style="color: blue;">main</span><span>() {</span></p>
-        <p><span style="color: yellow;">// printf() affiche la chaîne à l'intérieur du guillemet</span></p>
-        <p><span style="color: green;">printf</span><span>(</span><span style="color: red;">"Hello, world!"</span><span>);</span></p>
-        <p><span style="color: purple;">return </span><span style="color: aqua;">0;</span></p>
+        <p><span class="include">#include "stdio.h"</span></p>
+        <p><span class="declaration">int main<span class="symbole">() {</span></p>
+        <p><span class="comment">&emsp;// printf() affiche la chaîne à l'intérieur du guillemet</span></p>
+        <p><span class="function">&emsp;printf</span><span>(</span><span class="string">"Hello, world!"</span><span class="symbole">);</span></p>
+        <p><span class="keyword">return </span><span class="value">0</span><span class="symbole">;</span></p>
         <p><span>}</span></p>
     </div>
-    <!--Le chapitre 2 est basé sur l'article : https://www.programiz.com/c-programming/examples/print-integer-->
+    <!--Le chapitre 2 est basé sur l'article : https://www.programiz.com/c-programming/examples/print-integer -->
     <h1>Chapitre 2 : C Programme pour afficher un nombre entré par l'utilisateur</h1>
     <div class="block_of_code">
-        <p><span style="color: orange;">#include </span> <span style="color: red;"><"stdio.h"></span></p>
-        <p><span style="color: purple;">int </span><span style="color: blue;">main</span><span>() {</span></p>
-        <p><span style="color: purple;">int</span> <span style="color: whitesmoke;">number;</span></p>
-        <p><span style="color: yellow">printf(</span><span style="color: red;">"Enter an integer: "</span><span>);</span></p>
-    </div>
+        <p><span class="include">#include "stdio.h"</span></p>
+        <p><span class="declaration">int main</span><span class="symbole">() {</span></p>
+        <p><span class="declaration">&emsp;int number</span></p>
+        <p><span class="function">&emsp;printf<span class="symbole">(</span><span class="string">"Enter an integer: "</span><span class="symbole">);</span></p>
+        <p><span class="comment">&emsp;// lit et stocke l'entrée</span></p>
+        <p><span class="function">&emsp;scanf</span><span class="symbole">(</span><span class="string">"%d"</span><span class="symbole">,</span> <span class="declaration">&number</span><span class="symbole">);</span></p>
+        <p><span class="function">&emsp;printf</span><span class="symbole">(</span><span class="string">"You entered: %d"<span class="symbole">,</span> <span class="declaration">number</span></span><span class="symbole">);</span></p>
+        
+        <p></p>
+        <p><span class="keyword">return</span> <span class="value">0</span><span class="symbole">;</span></p>
+        <p><span class="symbole">}</span></p>
+</div>
     
-    <div class="block"><h3>Output :</h3>
+    <div class="block"><h3>Sortie :</h3>
     <p>Enter an integer : 25</p>
     <p>You entered : 25</p>
     </div>
     <div class="block">
     <ol>
-        <li><p>Dans le programme, variable integer (nombre entière) est déclaré</p>
+        <li><p>Dans le programme, variable integer (nombre entier) est déclaré</p>
         <div class="block_of_code">
-            <p><span style="color: purple;">int </span><span style="color: blue;">main</span><span style="color: whitesmoke">() {</span></p>
+            <p><span class="declaration">int number</span><span class="symbole">;</span></p>
         </div>
         </li>
-        <li><p>Ensuite, l'utilisateur est invité à saisir un nombre entière. Ce nombre est stocké dans la variable <var>number</var>.</p>
+        <li><p>Ensuite, l'utilisateur est invité à saisir un nombre entier. Ce nombre est stocké dans la variable <span class="declaration">number</span>.</p>
         <div class="block_of_code"></div>
-        <!--CHOSE A FAIRE : le block de code a rajouter -->
+            <p><span class="function">printf</span><span class="symbole">(</span><span class="string">"Enter the integer: "</span><span class="symbole">);</span></p>
+            <p><span class="function">scanf</span><span class="symbole">(</span><span class="string">"%d"</span><span class="symbole">,</span> <span class="declaration">&number</span><span class="symbole">);</span></p>
         </li>
+        <li><p>Enfin, la valeur stockée dans number est affichée à l'écran à l'aide de printf().</p></li>
     </ol>
     </div>
+    <!--Le chapitre 2 est basé sur l'article : https://www.programiz.com/c-programming/examples/add-numbers -->
+    <h1>Chapitre 3: C Programme pour ajouter deux entiers</h1>
+    <div class="block_of_code">
+        <p><span class="include">#include &lt;stdio.h&gt;</span></p>
+        <p><span class="declaration">int main</span><span class="symbole">() {</span></p>
+        <p><span class="declaration">&emsp;int number1</span><span class="symbole">,</span> <span class="declaration">number2</span><span class="symbole">,</span> <span class="declaration">sum;</span></p>
+        <p><span class="function">&emsp;printf</span><span class="symbole">(</span><span class="string">"Enter two integers: "</span><span class="symbole">);</span></p>
+        <p><span class="function">&emsp;scanf</span><span class="symbole">(</span><span class="string">"%d %d"</span><span class="symbole">,</span> <span class="declaration">&number1</span><span class="symbole">,</span> <span class="declaration">&number2</span><span class="symbole">);</span></p>
+        <p><span class="comment">&emsp;// calculate the sum</span></p>
+        <p><span class="declaration">&emsp;sum</span> <span class="symbole">=</span> <span class="declaration">number1</span> <span class="symbole">+</span> <span class="declaration">number2</span><span class="symbole">;</span></p>
+        <p><span class="function">&emsp;printf</span><span class="symbole">(</span><span class="string">"%d + %d = %d"</span><span class="symbole">,</span> <span class="declaration">number1</span><span class="symbole">,</span> <span class="declaration">number2</span><span class="symbole">,</span> <span class="declaration">sum</span><span class="symbole">);</span></p>
+        <p><span class="keyword">return</span> <span class="value">0</span><span class="symbole">;</span></p>
+        <p><span class="symbole">}</span></p>
+    </div>
+        <div class="block">
+            <h3>Sortie: </h3>
+            <p>Enter two integers: 12</p>
+            <p>11</p>
+            <p>12 + 11 = 23</p>
+        </div>
+        <div class="block">
+            <ol>
+            <li><p>Dans ce programme, l'utilisateur est invité à saisir deux nombres entiers. Ces deux entiers sont stockés respectivement dans les variables <span class="declaration">number1</span> et <span class="declaration">number2</span></p>
+            <p><span class="function">printf</span><span class="symbole">(</span><span class="string">"Enter two integers: "</span><span class="symbole">);</span></p>
+            <p><span class="function">scanf</span><span class="symbole">(</span><span class="string">"%d %d"</span><span class="symbole">,</span> <span class="declaration">&number1</span><span class="symbole">,</span> <span class="declaration">&number2</span><span class="symbole">);</span></p>
+            </li>
+            <li><p>Ensuite, ces deux nombres sont ajoutés à l'aide de l'opérateur + et le résultat est stocké dans la variable <span class="declaration">somme</span>.</p></li>
+            <div class="block_of_code"><p><span class="declaration">sum</span> <span class="symbole">=</span> <span class="declaration">number1</span> <span class="symbole">+</span> <span class="declaration">number2</span><span class="symbole">;</span></p></div>            
+            <li><p>Enfin, la fonction <span class="function">printf</span> permet d'afficher la somme des nombres.</p></li>
+            <div class="block_of_code"><p><span class="function">printf</span><span class="symbole">(</span><span class="string">"%d + %d = %d"</span><span class="symbole">,</span> <span class="declaration">number1</span><span class="symbole">,</span> <span class="declaration">number2</span><span class="symbole">,</span> <span class="declaration">sum</span><span class="symbole">);</span></p>
+            </div>
+        </div>
+            </ol>
+            <div class="language-select-container">
+                <ul>
+                    <li><a href="exercices.html">Les exercices sur C</a></li>
+                </ul>
+            </div>
+    </body>
 </html>
