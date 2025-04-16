@@ -11,20 +11,16 @@
         </div>
         <h1>Inscription</h1>
         <form>
-            <label>L'adresse e-mail</label><br>
-            <label>
-                <input><br>
-            </label>
+            <label>Le nom de profil</label><br>
+            <label><input name="username" required></label><br>
             <label>Mot de passe</label><br>
             <label>
-                <input><br>
+                <input name="password" required><br>
             </label>
             <label>Repétez le mot de passe</label><br>
             <label>
-                <input><br>
+                <input name="confirm_password" required><br>
             </label>
-            <label>Le nom de profil</label><br>
-            <label><input></label><br>
             <button>S'inscrire</button><br> <!--PROBLEME : le button n'est pas fixée-->
             <p>Déja inscrit ? Veuillez venir sur la page de connexion.</p>
             <a href="connexion.html">Connexion</a> 
