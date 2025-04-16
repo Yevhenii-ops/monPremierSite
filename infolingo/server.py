@@ -45,6 +45,11 @@ def inscription():
             return render_template("register1.mako.html", error = str(e))
         finally:
             db.rollback()
+
+@app.route("/accueil/<username>")
+def registred_user_accueil(username):
+    return render_template("registered_user_accueil.html.mako", username=username)
+
 @app.route("/login", methods = ["GET", "POST"])
 def login():
     if request.method == "GET":
@@ -59,9 +64,12 @@ def login():
             if user['password'] != request.form['password']:
                 raise ValidationError("Mot de passe invalide")
             app.logger.info("LOG IN '%s' (id=%d)", user['username'], user['id'])
-            return redirect(url_for("accueil"), code=303) # il faudra changer le lien de la redirection
+            return redirect(url_for("registred_user_accueil", username=user['username']), code=303) # il faudra changer le lien de la redirection
         except ValidationError as e:
             return render_template("login.html.mako", error=str(e))
+
+
+
 
 
 
