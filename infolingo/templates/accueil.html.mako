@@ -11,7 +11,7 @@
         </div>
         <nav>
             <a href="connexion.html">Connexion</a>
-            <a href="inscription.html">Inscription</a>
+            <a href="${url_for('inscription')}">Inscription</a>
             <a href="contacts.html">Contact</a>
             <a href="profil.html">Profil</a>
             <a href="forum.html">Forum</a>

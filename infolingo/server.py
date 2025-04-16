@@ -23,7 +23,7 @@ class ValidationError(ValueError):
     """Error in users provided values."""
     pass
 @app.route("/inscription", methods =["GET", "POST"])
-def insciption():
+def inscription():
     if request.method == "GET":
         return render_template("inscription.html.mako")
     elif request.method == "POST":
@@ -38,7 +38,7 @@ def insciption():
                 """, (request.form["username"], request.form["password"],)
             )
             db.commit()
-            return redirect(url_for("login"), code=303)
+            #return redirect(url_for("login"), code=303)
         except ValidationError as e:
             return render_template("register1.mako.html", error = str(e))
         except sqlite3.IntegrityError as e:
