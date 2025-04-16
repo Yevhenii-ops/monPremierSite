@@ -7,10 +7,10 @@
     </head>
     <body>
         <div class="header-container">
-            <a href="accueil.html"><img src="../static/logo.png" alt="logo" class="logo"></a><h1>Infolingo</h1>
+            <a href="${url_for("static", filename="logo.png")}"><img src="../static/logo.png" alt="logo" class="logo"></a><h1>Infolingo</h1>
         </div>
         <nav>
-            <a href="connexion.html">Connexion</a>
+            <a href="${url_for('login')}">Connexion</a>
             <a href="${url_for('inscription')}">Inscription</a>
             <a href="contacts.html">Contact</a>
             <a href="profil.html">Profil</a>

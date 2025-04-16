@@ -9,15 +9,15 @@
     </head>
     <body>
         <div class="header-container">
-            <a href="${url_for("static", filename="logo.png")}"><img src="../static/logo.png" alt="logo" class="logo"></a><h1>Infolingo</h1>
+            <a href="accueil.html"><img src="Images/logo.png" alt="logo" class="logo"></a><h1>Infolingo</h1>
         </div>
         <h1>Connexion</h1>
         <form method="POST"> <!--CHOSE A FAIRE : rajouter le lien pour action-->
-            <label>Pseudo</label><br>
-            <input name="username" required><br>
-            <label>Le mot de passe</label><br>
-            <input name="password" required><br>
-            <button id="connexion_button" type="submit">Se connecter</button><br> <!--PROBLEME : le button n'est pas fixée! Yevhenii: "Est-ce qu'il faut fixer ça ? Moi jsp"-->
+            <label name="username" required>Pseudo</label><br>
+            <input><br>
+            <label name="password" required>Le mot de passe</label><br>
+            <input><br>
+            <button id="connexion_button" type="sumbit">Se connecter</button><br> <!--PROBLEME : le button n'est pas fixée! Yevhenii: "Est-ce qu'il faut fixer ça ? Moi jsp"-->
             <p>Pas de compte ? Veuillez venir sur la page d'inscription : <a href="${url_for('inscription')}">Inscription</a></p>
         </form>
         

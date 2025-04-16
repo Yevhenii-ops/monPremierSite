@@ -52,14 +52,14 @@ def login():
     elif request.method == "POST":
         db = get_db()
         try:
-            cursor = db.execute("SELECT * FROM users WHERE pseudo=? LIMIT 1", (request.form["username"],))
+            cursor = db.execute("SELECT * FROM users WHERE username=? LIMIT 1", (request.form["username"],))
             user = cursor.fetchone()
             if user is None:
-                raise ValidationError("Pseudonym invalide")
+                raise ValidationError("Username invalide")
             if user['password'] != request.form['password']:
                 raise ValidationError("Mot de passe invalide")
-            app.logger.info("LOG IN '%s' (id=%d)", user['pseudo'], user['id'])
-            return redirect(url_for("accueil", pseudo=user['pseudo']), code=303) # il fautdra changer le lien de la redirection
+            app.logger.info("LOG IN '%s' (id=%d)", user['username'], user['id'])
+            return redirect(url_for("accueil"), code=303) # il fautdra changer le lien de la redirection
         except ValidationError as e:
             return render_template("login.html.mako", error=str(e))
 

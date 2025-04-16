@@ -7,7 +7,7 @@
     </head>
     <body>
         <div class="header-container">
-            <a href="accueil.html"><img src="Images/logo.png" alt="logo" class="logo"></a><h1>Infolingo</h1>
+            <a href="${url_for("static", filename="logo.png")}"><img src="../static/logo.png" alt="logo" class="logo"></a><h1>Infolingo</h1>
         </div>
         <h1>Inscription</h1>
         <form method="POST">
