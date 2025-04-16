@@ -1,0 +1,6 @@
+# Liste des extensions Python nécessaire avec leur version.
+#
+# Le signe ~= signifie qu'une version compatible avec la version
+# indiquée est requise.
+Flask~=3.0.3
+mako~=1.3.8
