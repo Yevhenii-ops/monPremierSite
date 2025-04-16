@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
         <title>connexion</title>
-        <link rel="stylesheet" href="style/style.css">
+        <link rel="stylesheet" type="text/css" href="../static/style.css">
     </head>
     <body>
         <div class="header-container">
@@ -13,12 +13,12 @@
         </div>
         <h1>Connexion</h1>
         <form> <!--CHOSE A FAIRE : rajouter le lien pour action-->
-            <label>L'adresse e-mail ou nom de profil</label><br>
+            <label name="username" required>Pseudo</label><br>
             <input><br>
-            <label>Le mot de passe</label><br>
+            <label name="password" required>Le mot de passe</label><br>
             <input><br>
-            <button id="connexion_button">Se connecter</button><br> <!--PROBLEME : le button n'est pas fixée! Yevhenii: "Est-ce qu'il faut fixer ça ? Moi jsp"-->
-            <p>Pas de compte ? Veuillez venir sur la page d'inscription : <a href="inscription.html">Inscription</a></p>
+            <button id="connexion_button" type="sumbit">Se connecter</button><br> <!--PROBLEME : le button n'est pas fixée! Yevhenii: "Est-ce qu'il faut fixer ça ? Moi jsp"-->
+            <p>Pas de compte ? Veuillez venir sur la page d'inscription : <a href="${url_for('inscription')}">Inscription</a></p>
         </form>
         
     </body>
