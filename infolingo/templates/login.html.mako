@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="header-container">
-            <a href="${url_for("static", filename="logo.png")}"><img src="../static/logo.png" alt="logo" class="logo"></a><h1>Infolingo</h1>
+            <a href="${url_for("accueil")}"><img src="../static/logo.png" alt="logo" class="logo"></a><h1>Infolingo</h1>
         </div>
         <h1>Connexion</h1>
         <form method="POST"> <!--CHOSE A FAIRE : rajouter le lien pour action-->

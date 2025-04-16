@@ -69,12 +69,6 @@ def login():
             return render_template("login.html.mako", error=str(e))
 
 
-
-
-
-
-
-
 # Démarre l'application en mode debug.
 # Attention: ce doit être la dernière instruction du script !!!
 
