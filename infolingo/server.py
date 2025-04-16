@@ -59,7 +59,7 @@ def login():
             if user['password'] != request.form['password']:
                 raise ValidationError("Mot de passe invalide")
             app.logger.info("LOG IN '%s' (id=%d)", user['username'], user['id'])
-            return redirect(url_for("accueil"), code=303) # il fautdra changer le lien de la redirection
+            return redirect(url_for("accueil"), code=303) # il faudra changer le lien de la redirection
         except ValidationError as e:
             return render_template("login.html.mako", error=str(e))
 
