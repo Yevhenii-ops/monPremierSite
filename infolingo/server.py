@@ -67,7 +67,14 @@ def login():
             return redirect(url_for("registred_user_accueil", username=user['username']), code=303) # il faudra changer le lien de la redirection
         except ValidationError as e:
             return render_template("login.html.mako", error=str(e))
-
+@app.route("/<username>")
+def profil(username):
+    db = get_db()
+    cursor = db.execute("SELECT * FROM users WHERE username = ?", (username,))
+    user = cursor.fetchone()
+    if user is None:
+        return render_template("user_not_found.html.mako")
+    return render_template("profil.html.mako", user=user)
 
 # Démarre l'application en mode debug.
 # Attention: ce doit être la dernière instruction du script !!!
