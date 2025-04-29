@@ -3,60 +3,36 @@
     <head>
         <meta charset="utf-8">
         <title>accueil</title>
-        <link rel="stylesheet" type="text/css" href="../static/style.css">
+        <link rel="stylesheet" href="static/style.css">
     </head>
     <body>
         <div class="header-container">
             <a href="accueil.html"><img src="Images/logo.png" alt="logo" class="logo"></a><h1>Infolingo</h1>
         </div>
-        <div class="profile-container">
-            <div class="profile-header">
-                <img src="Images/user_profile.jpg" alt="Photo de profil utilisateur">
-                <h1>Jean Dupont</h1>
-                <p>Apprenant des langages de programmation</p>
+        <div class="container">
+            <h1>Forum Simple (Statique)</h1>
+            <div class="post">
+                <h3>Discussion 1: Comment apprendre HTML ?</h3>
+                <p>Je suis débutant et j'aimerais savoir par où commencer pour apprendre HTML. Avez-vous des ressources ou des conseils ?</p>
+                <div class="reply">
+                    <p><strong>Réponse 1:</strong> Vous pouvez commencer par des tutoriels en ligne comme ceux sur W3Schools ou Mozilla Developer Network (MDN).</p>
+                </div>
             </div>
-            <div class="profile-details">
-                <h2>Langues Apprises</h2>
-                <div class="languages">
-                    <div class="language-card">
-                        <h3>Python</h3>
-                        <p>Niveau : Intermédiaire</p>
-                        <div class="progress-bar">
-                            <div class="python"></div>
-                        </div>
-                    </div>
-
-                    <div class="language-card">
-                        <h3>JavaScript</h3>
-                        <p>Niveau : Débutant</p>
-                        <div class="progress-bar">
-                            <div class="javascript"></div>
-                        </div>
-                    </div>
-                    <div class="language-card">
-                        <h3>C</h3>
-                        <p>Niveau : Débutant</p>
-                        <div class="progress-bar">
-                            <div class="c"></div>
-                        </div>
-                    </div>
+            <div class="post">
+                <h3>Discussion 2: Quels outils utiliser pour coder en HTML ?</h3>
+                <p>Quels éditeurs recommandez-vous pour écrire du HTML ?</p>
+                <div class="reply">
+                    <p><strong>Réponse 1:</strong> Visual Studio Code est un excellent choix. Il est gratuit et dispose de nombreuses extensions pour HTML.</p>
                 </div>
-                <h2>Badges</h2>
-                <div class="badges">
-                    <div class="badge">
-                        <img src="Images/badge_or.png" alt="Badge Or">
-                        <p>Badge Or</p>
-                    </div>
-                    <div class="badge">
-                        <img src="Images/badge_silver.png" alt="Badge Argent">
-                        <p>Badge Argent</p>
-                    </div>
-                    <div class="badge">
-                        <img src="Images/badge_bronze.png" alt="Badge Bronze">
-                        <p>Badge Bronze</p>
-                    </div>
-                </div>
-            <a href="deconnexion.html"><button id="déconnexion_button">Se déconnecter</button><br></a>
+            </div>
+            <div class="form">
+                <h3>Ajouter une nouvelle discussion (statique)</h3>
+                <form>
+                    <input type="text" placeholder="Titre de la discussion" required>
+                    <textarea placeholder="Votre message" required></textarea>
+                    <input type="submit" value="Publier">
+                </form>
+            </div>
         </div>
     </body>
 </html>

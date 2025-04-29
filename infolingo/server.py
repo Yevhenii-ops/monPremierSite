@@ -75,6 +75,46 @@ def profil(username):
     if user is None:
         return render_template("user_not_found.html.mako")
     return render_template("profil.html.mako", user=user)
+@app.route("/forum", methods = ["GET", "POST"])
+def forum():
+    if request.method == "GET":
+        return render_template('forum.html.mako')
+    elif request.method == "POST":
+        db = get_db()
+        if request.form['action'] == 'ask_question':
+
+            cursor = db.execute
+            (
+            """
+            INSERT INTO questions VALUES(?, ?, ?);
+            """, (user_id, request.form['content'], 0) 
+            ) #Supposons que user_id est donné 
+        elif request.form['action'] == 'answer':
+            cursor = db.execute
+            (
+            """
+            INSERT INTO messages VALUES (?, ?, ?, ?);
+            """, (question_id, user_id, request.form['content'], 0)
+            ) #Supposons que question_id et user_id sont donnés
+        elif request.form['action'] == 'evaluate_question':
+            cursor = db.execute
+            (
+                """
+                SELECT mark FROM questions
+                WHERE id = ?
+                """, question_id
+            ) # Supposons que question_id est donée
+            mark = cursor.fetchone()['mark']
+            cursor = db.execute
+            (
+                """
+                UPDATE questions SET mark = ? WHERE id = ?
+                """, mark = mark + request.form[vote], question_id
+            )# request.form[vote] c'est une valeur qui est soit 1, soit -1
+             # Supposons que question_id est donné
+
+             #ICI, IL FAUT FAIRE ENCORE SÛREMENT LE VOTE POUR LES MESSAGES
+    return render_template('forum.html.mako')
 
 # Démarre l'application en mode debug.
 # Attention: ce doit être la dernière instruction du script !!!
