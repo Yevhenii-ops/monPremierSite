@@ -9,8 +9,8 @@ from flask import request, redirect, url_for
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
 from flask import Flask   # Importe le type Flask.
-from random import randint
 import sqlite3
+from flask import sessions
 app = Flask("Infolingo")  # Crée une application Flask nommée "SuperSite".
 MakoTemplates(app)
 SQLiteExtension(app)
@@ -75,8 +75,10 @@ def profil(username):
     if user is None:
         return render_template("user_not_found.html.mako")
     return render_template("profil.html.mako", user=user)
+
 @app.route("/forum", methods = ["GET", "POST"])
 def forum():
+
     if request.method == "GET":
         return render_template('forum.html.mako')
     elif request.method == "POST":
@@ -112,8 +114,10 @@ def forum():
                 """, mark = mark + request.form[vote], question_id
             )# request.form[vote] c'est une valeur qui est soit 1, soit -1
              # Supposons que question_id est donné
-
+             # POUR SAVOIR QUI EST CONNECTE, IL FAUT SE SERVIR DU DICTIONNAIRE sessions 
              #ICI, IL FAUT FAIRE ENCORE SÛREMENT LE VOTE POUR LES MESSAGES
+             #IL FAUT CHANGER LE SYSTEME DE VOTE AU NIVEAU DE LA BASE DE DONNEES EN FAISANT
+             #LA RELATION N à N
     return render_template('forum.html.mako')
 
 # Démarre l'application en mode debug.
