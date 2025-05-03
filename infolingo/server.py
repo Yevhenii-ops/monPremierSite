@@ -10,7 +10,7 @@ os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
 from flask import Flask   # Importe le type Flask.
 import sqlite3
-from flask import sessions
+from flask import session, sessions
 app = Flask("Infolingo")  # Crée une application Flask nommée "SuperSite".
 MakoTemplates(app)
 SQLiteExtension(app)
@@ -52,6 +52,8 @@ def registred_user_accueil(username):
 
 @app.route("/login", methods = ["GET", "POST"])
 def login():
+    if 'user_id' in session:
+        return redirect(url_for('accueil'))
     if request.method == "GET":
         return render_template("login.html.mako")
     elif request.method == "POST":
@@ -67,6 +69,13 @@ def login():
             return redirect(url_for("registred_user_accueil", username=user['username']), code=303) # il faudra changer le lien de la redirection
         except ValidationError as e:
             return render_template("login.html.mako", error=str(e))
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return render_template("deconnexion.html.mako")
+
+
 @app.route("/<username>")
 def profil(username):
     db = get_db()
@@ -78,7 +87,9 @@ def profil(username):
 
 @app.route("/forum", methods = ["GET", "POST"])
 def forum():
-
+    if 'user_id' not in session:
+        return redirect(url_for("/accueil"),error = "Vous n'êtes pas inscrit pour participer au forum", code = 303)
+    
     if request.method == "GET":
         return render_template('forum.html.mako')
     elif request.method == "POST":
