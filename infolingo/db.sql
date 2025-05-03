@@ -19,7 +19,7 @@ FOREIGN KEY (user_id) REFERENCES users(id)
 content TEXT NOT NULL
 mark INTEGER NOT NULL
 
-CREATE TABLE IN NOT EXISTS votes(
+CREATE TABLE IF NOT EXISTS votes(
 FOREIGN KEY (question_id) REFERENCES questions(id)
 FOREIGN KEY (user_id) REFERENCES users(id)
 )
