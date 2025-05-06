@@ -27,7 +27,7 @@
                     % if question['answers'] is not Null:
                         % for answer in question['answers']:
                         <div class="reply">
-                            <p><strong>Réponse ${answer['index']}:</strong>${anser['content']}</p>                  
+                            <p><strong>Réponse ${answer['index']}:</strong>${answer['content']}</p>                  
                         </div>
                         % endfor
                     % endif

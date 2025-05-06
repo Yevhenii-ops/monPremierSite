@@ -66,6 +66,8 @@ def login():
             if user['password'] != request.form['password']:
                 raise ValidationError("Mot de passe invalide")
             app.logger.info("LOG IN '%s' (id=%d)", user['username'], user['id'])
+            session.clear()
+            session["user_id"] = user["id"]
             return redirect(url_for("registred_user_accueil", username=user['username']), code=303) # il faudra changer le lien de la redirection
         except ValidationError as e:
             return render_template("login.html.mako", error=str(e))
@@ -85,11 +87,12 @@ def profil(username):
         return render_template("user_not_found.html.mako")
     return render_template("profil.html.mako", user=user)
 
+question_id = 1 # Peut-être il faudra trouver une autre solution
 @app.route("/forum", methods = ["GET", "POST"])
 def forum():
     if 'user_id' not in session:
         return redirect(url_for("/accueil"),error = "Vous n'êtes pas inscrit pour participer au forum", code = 303)
-    
+    user_id = session['user_id']
     if request.method == "GET":
         return render_template('forum.html.mako')
     elif request.method == "POST":
@@ -99,17 +102,32 @@ def forum():
             cursor = db.execute
             (
             """
-            INSERT INTO questions VALUES(?, ?, ?);
-            """, (user_id, request.form['content'], 0) 
+            INSERT INTO questions VALUES(?, ?);
+            """, (user_id, request.form['content'],) 
             ) #Supposons que user_id est donné 
         elif request.form['action'] == 'answer':
             cursor = db.execute
             (
             """
-            INSERT INTO messages VALUES (?, ?, ?, ?);
-            """, (question_id, user_id, request.form['content'], 0)
+            INSERT INTO messages VALUES (?, ?, ?);
+            """, (question_id, user_id, request.form['content'],)
             ) #Supposons que question_id et user_id sont donnés
         elif request.form['action'] == 'evaluate_question':
+            
+            cursor = db.execute
+            (
+            """
+            SELECT * FROM votes WHERE question_id = ?;
+            """, (question_id) 
+            )
+            questions = cursor.fetchall()
+            cursor = db.execute
+            (
+            """
+            INSERT INTO votes VALUES (?, ?);
+            """, (question_id, user_id)
+            )
+
             cursor = db.execute
             (
                 """
@@ -118,12 +136,14 @@ def forum():
                 """, question_id
             ) # Supposons que question_id est donée
             mark = cursor.fetchone()['mark']
+            mark = mark + request.form['vote']
             cursor = db.execute
             (
                 """
-                UPDATE questions SET mark = ? WHERE id = ?
-                """, mark = mark + request.form[vote], question_id
-            )# request.form[vote] c'est une valeur qui est soit 1, soit -1
+                UPDATE questions SET mark = ? WHERE id = ?;
+                """, (mark, question_id)
+            )
+            # request.form[vote] c'est une valeur qui est soit 1, soit -1
              # Supposons que question_id est donné
              # POUR SAVOIR QUI EST CONNECTE, IL FAUT SE SERVIR DU DICTIONNAIRE sessions 
              #ICI, IL FAUT FAIRE ENCORE SÛREMENT LE VOTE POUR LES MESSAGES
