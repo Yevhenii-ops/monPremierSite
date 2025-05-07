@@ -20,18 +20,24 @@
                     <textarea placeholder="Votre message" required></textarea>
                     <input type="submit" value="Publier">
                 </form>
-            % for question in questions :
-            <div class="post">
-                <h3>Discussion ${question['index']}: ${question['title']} ?</h3>
-                <p>${question['content']}</p>
-                    % if question['answers'] is not Null:
-                        % for answer in question['answers']:
-                        <div class="reply">
-                            <p><strong>Réponse ${answer['index']}:</strong>${answer['content']}</p>                  
-                        </div>
-                        % endfor
-                    % endif
-            </div>
-            % endfor
+                <% i = 1%>
+            % if questions is not None:
+                % for question in questions :
+                <div class="post" question-id="${i}">
+                    <h3>Discussion ${question['index']}: ${question['title']} ?</h3>
+                    <p>${question['content']}</p>
+                        % if question['answers'] is not Null:
+                                <% j = 1%>
+                            % for answer in question['answers']:
+                            <div class="reply" reply-id="${j}">
+                                <p><strong>Réponse ${answer['index']}:</strong>${answer['content']}</p>                  
+                            </div>
+                            <% j = j + 1%>
+                            % endfor
+                        % endif
+                </div>
+                    <% i = i + 1%>
+                % endfor
+            % endif
         </div>
     </body>

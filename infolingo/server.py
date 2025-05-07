@@ -14,7 +14,7 @@ from flask import session, sessions
 app = Flask("Infolingo")  # Crée une application Flask nommée "SuperSite".
 MakoTemplates(app)
 SQLiteExtension(app)
-
+app.secret_key = str(os.urandom(16))
 @app.route("/")
 def accueil():
     return render_template("accueil.html.mako")
@@ -40,15 +40,12 @@ def inscription():
             db.commit()
             return redirect(url_for("login"), code=303)
         except ValidationError as e:
-            return render_template("register1.mako.html", error = str(e))
+            return render_template("inscription.html.mako", error = str(e))
         except sqlite3.IntegrityError as e:
-            return render_template("register1.mako.html", error = str(e))
+            return render_template("inscription.html.mako", error = str(e))
         finally:
             db.rollback()
 
-@app.route("/accueil/<username>")
-def registred_user_accueil(username):
-    return render_template("registered_user_accueil.html.mako", username=username)
 
 @app.route("/login", methods = ["GET", "POST"])
 def login():
@@ -67,8 +64,8 @@ def login():
                 raise ValidationError("Mot de passe invalide")
             app.logger.info("LOG IN '%s' (id=%d)", user['username'], user['id'])
             session.clear()
-            session["user_id"] = user["id"]
-            return redirect(url_for("registred_user_accueil", username=user['username']), code=303) # il faudra changer le lien de la redirection
+            session['user_id'] = user['id']
+            return redirect(url_for('accueil'), code=303) # il faudra changer le lien de la redirection
         except ValidationError as e:
             return render_template("login.html.mako", error=str(e))
 
@@ -78,77 +75,90 @@ def logout():
     return render_template("deconnexion.html.mako")
 
 
-@app.route("/<username>")
-def profil(username):
-    db = get_db()
-    cursor = db.execute("SELECT * FROM users WHERE username = ?", (username,))
-    user = cursor.fetchone()
-    if user is None:
-        return render_template("user_not_found.html.mako")
-    return render_template("profil.html.mako", user=user)
+def has_voted(user_id, question_id, db):
+    cursor = db.execute
+    (
+        """
+        FROM votes SELECT user_id, question_id
+        WHERE user_id = ? question_id = ?
+        """, (user_id, question_id,)
+    )
+    if cursor.fethone() is not None:
+        return True
+    else:
+        return False
 
-question_id = 1 # Peut-être il faudra trouver une autre solution
 @app.route("/forum", methods = ["GET", "POST"])
 def forum():
-    if 'user_id' not in session:
-        return redirect(url_for("/accueil"),error = "Vous n'êtes pas inscrit pour participer au forum", code = 303)
-    user_id = session['user_id']
+    error = None
+    questions = {}
+    db = get_db()
     if request.method == "GET":
-        return render_template('forum.html.mako')
+        try:
+            if "user_id" not in session:
+                raise KeyError('Vous devez être connécté avant d\'accéder au forum.')
+        except KeyError as e:
+            return render_template("erreur.html.mako", error = str(e))
+        else:
+            cursor = db.execute
+            (
+                """
+                FROM questions SELECT *
+                """
+            ),()
+            questions = cursor.fetchall() #Flask dit que cet objet n'a pas ce methode ...
+        return render_template('forum.html.mako', questions=questions)
     elif request.method == "POST":
-        db = get_db()
-        if request.form['action'] == 'ask_question':
 
+        user_id = session['user_id']
+        if request.form['action'] == 'ask_question':
             cursor = db.execute
             (
             """
             INSERT INTO questions VALUES(?, ?);
             """, (user_id, request.form['content'],) 
-            ) #Supposons que user_id est donné 
+            ) 
         elif request.form['action'] == 'answer':
             cursor = db.execute
             (
             """
             INSERT INTO messages VALUES (?, ?, ?);
-            """, (question_id, user_id, request.form['content'],)
-            ) #Supposons que question_id et user_id sont donnés
+            """, (request.form['quesiton-id'], user_id, request.form['content'],)
+            )
         elif request.form['action'] == 'evaluate_question':
-            
-            cursor = db.execute
-            (
-            """
-            SELECT * FROM votes WHERE question_id = ?;
-            """, (question_id) 
-            )
-            questions = cursor.fetchall()
-            cursor = db.execute
-            (
-            """
-            INSERT INTO votes VALUES (?, ?);
-            """, (question_id, user_id)
-            )
 
-            cursor = db.execute
-            (
+            question_id = request.form[question_id]
+            if has_voted(user_id, question_id, db) is True:
+                pass # Page d'erreur
+            else:
+                cursor = db.execute
+                (
                 """
-                SELECT mark FROM questions
-                WHERE id = ?
-                """, question_id
-            ) # Supposons que question_id est donée
-            mark = cursor.fetchone()['mark']
-            mark = mark + request.form['vote']
-            cursor = db.execute
-            (
-                """
-                UPDATE questions SET mark = ? WHERE id = ?;
-                """, (mark, question_id)
-            )
-            # request.form[vote] c'est une valeur qui est soit 1, soit -1
-             # Supposons que question_id est donné
-             # POUR SAVOIR QUI EST CONNECTE, IL FAUT SE SERVIR DU DICTIONNAIRE sessions 
-             #ICI, IL FAUT FAIRE ENCORE SÛREMENT LE VOTE POUR LES MESSAGES
-             #IL FAUT CHANGER LE SYSTEME DE VOTE AU NIVEAU DE LA BASE DE DONNEES EN FAISANT
-             #LA RELATION N à N
+                INSERT INTO votes VALUES (?, ?);
+                """, (question_id, user_id)
+                )
+
+                cursor = db.execute
+                (
+                    """
+                    SELECT mark FROM questions
+                    WHERE id = ?
+                    """, question_id
+                ) # Supposons que question_id est donée
+                mark = cursor.fetchone()['mark']
+                mark = mark + request.form['vote']
+                cursor = db.execute
+                (
+                    """
+                    UPDATE questions SET mark = ? WHERE id = ?;
+                    """, (mark, question_id)
+                )
+                # request.form[vote] c'est une valeur qui est soit 1, soit -1
+                 # Supposons que question_id est donné
+                 # POUR SAVOIR QUI EST CONNECTE, IL FAUT SE SERVIR DU DICTIONNAIRE sessions 
+                 #ICI, IL FAUT FAIRE ENCORE SÛREMENT LE VOTE POUR LES MESSAGES
+                 #IL FAUT CHANGER LE SYSTEME DE VOTE AU NIVEAU DE LA BASE DE DONNEES EN FAISANT
+                 #LA RELATION N à N
     return render_template('forum.html.mako')
 
 # Démarre l'application en mode debug.

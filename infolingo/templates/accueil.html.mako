@@ -14,7 +14,7 @@
             <a href="${url_for('inscription')}">Inscription</a>
             <a href="contacts.html">Contact</a>
             <a href="profil.html">Profil</a>
-            <a href="forum.html">Forum</a>
+            <a href="${url_for('forum')}">Forum</a>
         </nav>
         <h2>
             Bienvenue sur Infolingo, le site pour apprendre à coder facilement.<br>Ici, vous pourrez découvrir comment coder tout en vous exerçant. De plus, grâce au forum, vous pourrez échanger avec d'autres utilisateurs du site.
