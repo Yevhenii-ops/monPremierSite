@@ -100,8 +100,7 @@ def forum():
         except KeyError as e:
             return render_template("erreur.html.mako", error = str(e))
         else:
-            cursor = db.execute
-            (
+            cursor = db.execute(
                 """
                 SELECT * FROM questions
                 """
@@ -131,15 +130,13 @@ def forum():
             if has_voted(user_id, question_id, db) is True:
                 pass
             else:
-                cursor = db.execute
-                (
+                cursor = db.execute(
                 """
                 INSERT INTO votes VALUES (?, ?);
                 """, (question_id, user_id)
                 )
 
-                cursor = db.execute
-                (
+                cursor = db.execute(
                     """
                     UPDATE questions SET mark = mark + ?
                     WHERE id = ?
@@ -165,16 +162,14 @@ def profil():
         user_id = session["user_id"]
         if request.method == "GET":
             db = get_db()
-            cursor = db.execute
-            (
+            cursor = db.execute(
                 """
                 FROM users SELECT * WHERE user_id = ?
                 """, (session["user_id"],)
             )
             user = cursor.fetchone()
             cursor = get_db()
-            cursor = db.execute
-            (
+            cursor = db.execute(
                 """
                 FROM learned_languages SELECT language, niveau de matrise WHERE user_id = ?
                 """, (user_id)
