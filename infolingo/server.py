@@ -65,7 +65,7 @@ def login():
             app.logger.info("LOG IN '%s' (id=%d)", user['username'], user['id'])
             session.clear()
             session['user_id'] = user['id']
-            return redirect(url_for('accueil'), code=303) # il faudra changer le lien de la redirection
+            return redirect(url_for('accueil'), code=303)
         except ValidationError as e:
             return render_template("login.html.mako", error=str(e))
 
@@ -79,7 +79,7 @@ def has_voted(user_id, question_id, db):
     cursor = db.execute
     (
         """
-        FROM votes SELECT user_id, question_id
+        SELECT question_id, user_id FROM votes
         WHERE user_id = ? question_id = ?
         """, (user_id, question_id,)
     )
@@ -103,10 +103,10 @@ def forum():
             cursor = db.execute
             (
                 """
-                FROM questions SELECT *
+                SELECT * FROM questions
                 """
-            ),()
-            questions = cursor.fetchall() #Flask dit que cet objet n'a pas ce methode ...
+            )
+            questions = cursor.fetchall() #Flask dit que cet objet n'a pas ce méthode ...
         return render_template('forum.html.mako', questions=questions)
     elif request.method == "POST":
 
@@ -129,7 +129,7 @@ def forum():
 
             question_id = request.form[question_id]
             if has_voted(user_id, question_id, db) is True:
-                pass # Page d'erreur
+                pass
             else:
                 cursor = db.execute
                 (
@@ -141,25 +141,46 @@ def forum():
                 cursor = db.execute
                 (
                     """
-                    SELECT mark FROM questions
+                    UPDATE questions SET mark = mark + ?
                     WHERE id = ?
-                    """, question_id
+                    """, (request.form['vote'], question_id)
                 ) # Supposons que question_id est donée
-                mark = cursor.fetchone()['mark']
-                mark = mark + request.form['vote']
-                cursor = db.execute
-                (
-                    """
-                    UPDATE questions SET mark = ? WHERE id = ?;
-                    """, (mark, question_id)
-                )
-                # request.form[vote] c'est une valeur qui est soit 1, soit -1
+
+                 # request.form[vote] c'est une valeur qui est soit 1, soit -1
                  # Supposons que question_id est donné
                  # POUR SAVOIR QUI EST CONNECTE, IL FAUT SE SERVIR DU DICTIONNAIRE sessions 
                  #ICI, IL FAUT FAIRE ENCORE SÛREMENT LE VOTE POUR LES MESSAGES
                  #IL FAUT CHANGER LE SYSTEME DE VOTE AU NIVEAU DE LA BASE DE DONNEES EN FAISANT
                  #LA RELATION N à N
     return render_template('forum.html.mako')
+
+@app.route("/profil", methods = ["GET", "POST"])
+def profil():
+    try:
+        if "user_id" not in session:
+            raise KeyError("Vous devez vous connécté avant d'accéder au profil")
+    except KeyError as e:
+        return render_template("erreur.html.mako", error = str(e))
+    else:
+        user_id = session["user_id"]
+        if request.method == "GET":
+            db = get_db()
+            cursor = db.execute
+            (
+                """
+                FROM users SELECT * WHERE user_id = ?
+                """, (session["user_id"],)
+            )
+            user = cursor.fetchone()
+            cursor = get_db()
+            cursor = db.execute
+            (
+                """
+                FROM learned_languages SELECT language, niveau de matrise WHERE user_id = ?
+                """, (user_id)
+            )
+            learned_languages = cursor.fetchall()
+            return render_template("profil.hmtl.mako", user = user, learned_languages = learned_languages)
 
 # Démarre l'application en mode debug.
 # Attention: ce doit être la dernière instruction du script !!!
