@@ -15,6 +15,11 @@
             <a href="contacts.html">Contact</a>
             <a href="profil.html">Profil</a>
             <a href="${url_for('forum')}">Forum</a>
+            % if is_logged is True:
+                 <a href="${url_for('logout')}">Déconnexion</a>
+                 <a href="${url_for('profil')}">Profil</a>
+            %endif
+
         </nav>
         <h2>
             Bienvenue sur Infolingo, le site pour apprendre à coder facilement.<br>Ici, vous pourrez découvrir comment coder tout en vous exerçant. De plus, grâce au forum, vous pourrez échanger avec d'autres utilisateurs du site.

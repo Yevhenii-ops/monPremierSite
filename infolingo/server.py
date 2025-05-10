@@ -15,9 +15,15 @@ app = Flask("Infolingo")  # Crée une application Flask nommée "SuperSite".
 MakoTemplates(app)
 SQLiteExtension(app)
 app.secret_key = str(os.urandom(16))
+
+def is_logged():
+    if 'user_id' in session:
+        return True
+    else:
+        return False
 @app.route("/")
 def accueil():
-    return render_template("accueil.html.mako")
+    return render_template("accueil.html.mako", is_logged = is_logged())
 
 class ValidationError(ValueError):
     """Error in users provided values."""
@@ -73,6 +79,7 @@ def login():
 def logout():
     session.clear()
     return render_template("deconnexion.html.mako")
+
 
 
 def has_voted(user_id, question_id, db):
