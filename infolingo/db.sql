@@ -11,6 +11,7 @@ user_id INTEGER NOT NULL,
 title TEXT NOT NULL,
 content TEXT NOT NULL,
 mark INTEGER DEFAULT 0,
+date TEXT NOT NULL,
 FOREIGN KEY (user_id) REFERENCES users(id)
 );
 

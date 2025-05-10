@@ -88,6 +88,7 @@ def has_voted(user_id, question_id, db):
     else:
         return False
 
+
 @app.route("/forum", methods = ["GET", "POST"])
 def forum():
     error = None
@@ -106,9 +107,9 @@ def forum():
             if request.form.get('ask') == 'Publier':
                 cursor = db.execute(
                 """
-                INSERT INTO questions (user_id, title, content)
-                VALUES(?, ?, ?);
-                """, (user_id, request.form["title"], request.form["content"]) 
+                INSERT INTO questions (user_id, title, content, date)
+                VALUES(?, ?, ?, ?);
+                """, (user_id, request.form["title"], request.form["content"], datetime.datetime.now()) 
                 ) 
             elif request.form.get('answer') == 'Publier':
                 cursor = db.execute(
@@ -156,7 +157,7 @@ def forum():
             """
         )
         users = cursor.fetchall()
-        return render_template('forum.html.mako', questions=questions, answers=answers, users=users)
+        return render_template('forum.html.mako', questions = sorted(questions, key=lambda q: q['date'], reverse=True), answers=answers, users=users)
 
 @app.route("/profil", methods = ["GET", "POST"])
 def profil():
