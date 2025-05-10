@@ -7,16 +7,17 @@ profile_photo TEXT
 
 CREATE TABLE IF NOT EXISTS questions(
 id INTEGER PRIMARY KEY AUTOINCREMENT,
-user_id INTEGER,
+user_id INTEGER NOT NULL,
+title TEXT NOT NULL,
 content TEXT NOT NULL,
 mark INTEGER DEFAULT 0,
 FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-CREATE TABLE IF NOT EXISTS messages(
+CREATE TABLE IF NOT EXISTS answers(
 id INTEGER PRIMARY KEY AUTOINCREMENT,
-question_id INTEGER,
-user_id INTEGER,
+question_id INTEGER NOT NULL,
+user_id INTEGER NOT NULL,
 content TEXT NOT NULL,
 mark INTEGER DEFAULT 0,
 FOREIGN KEY (question_id) REFERENCES questions(id),
@@ -28,11 +29,10 @@ question_id INTEGER,
 user_id INTEGER,
 FOREIGN KEY (question_id) REFERENCES questions(id),
 FOREIGN KEY (user_id) REFERENCES users(id)
-)
+);
 
 CREATE TABLE IF NOT EXISTS learned_languages(
 user_id INTEGER NOTNULL,
 language TEXT NOTNULL,
 niveau_de_matrise TEXT NOTNULL
 )
-

@@ -92,64 +92,71 @@ def has_voted(user_id, question_id, db):
 def forum():
     error = None
     questions = {}
+    answers = {}
     db = get_db()
-    if request.method == "GET":
-        try:
-            if "user_id" not in session:
-                raise KeyError('Vous devez être connécté avant d\'accéder au forum.')
-        except KeyError as e:
-            return render_template("erreur.html.mako", error = str(e))
-        else:
-            cursor = db.execute(
-                """
-                SELECT * FROM questions
-                """
-            )
-            questions = cursor.fetchall() #Flask dit que cet objet n'a pas ce méthode ...
-        return render_template('forum.html.mako', questions=questions)
-    elif request.method == "POST":
+    try:
+        if "user_id" not in session:
+            raise KeyError('Vous devez être connécté avant d\'accéder au forum.')
+    except KeyError as e:
+        return render_template("erreur.html.mako", error = str(e))
+    else:
+        if request.method == "POST":
 
-        user_id = session['user_id']
-        if request.form['action'] == 'ask_question':
-            cursor = db.execute
-            (
-            """
-            INSERT INTO questions VALUES(?, ?);
-            """, (user_id, request.form['content'],) 
-            ) 
-        elif request.form['action'] == 'answer':
-            cursor = db.execute
-            (
-            """
-            INSERT INTO messages VALUES (?, ?, ?);
-            """, (request.form['quesiton-id'], user_id, request.form['content'],)
-            )
-        elif request.form['action'] == 'evaluate_question':
-
-            question_id = request.form[question_id]
-            if has_voted(user_id, question_id, db) is True:
-                pass
-            else:
+            user_id = session['user_id']
+            if request.form.get('ask') == 'Publier':
                 cursor = db.execute(
                 """
-                INSERT INTO votes VALUES (?, ?);
-                """, (question_id, user_id)
+                INSERT INTO questions (user_id, title, content)
+                VALUES(?, ?, ?);
+                """, (user_id, request.form["title"], request.form["content"]) 
+                ) 
+            elif request.form.get('answer') == 'Publier':
+                cursor = db.execute(
+                """
+                INSERT INTO answers (question_id, user_id, content)
+                VALUES (?, ?, ?);
+                """, (request.form.get("question_id"), user_id, request.form["content"],)
                 )
-
-                cursor = db.execute(
+            elif request.form.get('evaluate_question') == 'publié':
+                question_id = request.form[question_id]
+                if has_voted(user_id, question_id, db) is True:
+                    pass
+                else:
+                    cursor = db.execute(
                     """
-                    UPDATE questions SET mark = mark + ?
-                    WHERE id = ?
-                    """, (request.form['vote'], question_id)
-                ) # Supposons que question_id est donée
+                    INSERT INTO votes VALUES (?, ?);
+                    """, (question_id, user_id)
+                    )
 
-                 # request.form[vote] c'est une valeur qui est soit 1, soit -1
-                 # Supposons que question_id est donné
-                 # POUR SAVOIR QUI EST CONNECTE, IL FAUT SE SERVIR DU DICTIONNAIRE sessions 
-                 #ICI, IL FAUT FAIRE ENCORE SÛREMENT LE VOTE POUR LES MESSAGES
-                 #IL FAUT CHANGER LE SYSTEME DE VOTE AU NIVEAU DE LA BASE DE DONNEES EN FAISANT
-                 #LA RELATION N à N
-    return render_template('forum.html.mako')
+                    cursor = db.execute(
+                        """
+                        UPDATE questions SET mark = mark + ?
+                        WHERE id = ?
+                        """, (request.form['vote'], question_id)
+                    )
+
+                     # request.form[vote] c'est une valeur qui est soit 1, soit -1
+                     #ICI, IL FAUT FAIRE ENCORE SÛREMENT LE VOTE POUR LES MESSAGES
+            db.commit()
+        cursor = db.execute(
+        """
+        SELECT * FROM questions
+        """
+        )
+        questions = cursor.fetchall()
+        cursor = db.execute(
+        """
+        SELECT * FROM answers
+        """
+        )
+        answers = cursor.fetchall()
+        cursor = db.execute(
+            """
+            SELECT * FROM users
+            """
+        )
+        users = cursor.fetchall()
+        return render_template('forum.html.mako', questions=questions, answers=answers, users=users)
 
 @app.route("/profil", methods = ["GET", "POST"])
 def profil():
