@@ -83,18 +83,17 @@ def logout():
 
 
 def has_voted(user_id, question_id, db):
-    cursor = db.execute
-    (
+    cursor = db.execute(
         """
-        SELECT question_id, user_id FROM votes
-        WHERE user_id = ? question_id = ?
-        """, (user_id, question_id,)
+        SELECT question_id, user_id, vote FROM votes
+        WHERE user_id = ? AND question_id = ?
+        """, (user_id, question_id)
     )
-    if cursor.fethone() is not None:
-        return True
+    row = cursor.fetchone()
+    if row is None:
+        return 0
     else:
-        return False
-
+        return int(row['vote'])
 
 @app.route("/forum", methods = ["GET", "POST"])
 def forum():
@@ -125,26 +124,39 @@ def forum():
                 VALUES (?, ?, ?);
                 """, (request.form.get("question_id"), user_id, request.form["content"],)
                 )
-            elif request.form.get('evaluate_question') == 'publié':
-                question_id = request.form[question_id]
-                if has_voted(user_id, question_id, db) is True:
-                    pass
-                else:
+            elif request.form.get('vote') == '1' or request.form.get('vote') == '-1':
+                question_id = request.form.get('question-id')
+                vote = int(request.form.get('vote'))
+                if vote == has_voted(user_id, question_id, db):
                     cursor = db.execute(
-                    """
-                    INSERT INTO votes VALUES (?, ?);
-                    """, (question_id, user_id)
+                        """
+                        DELETE FROM votes WHERE user_id = ? and question_id = ?
+                        """, (user_id, question_id)
                     )
-
+                    cursor = db.execute(
+                        """
+                        UPDATE questions SET mark = mark - ?
+                        WHERE id = ?
+                        """, (vote, question_id,)
+                    )
+                else:
                     cursor = db.execute(
                         """
                         UPDATE questions SET mark = mark + ?
                         WHERE id = ?
-                        """, (request.form['vote'], question_id)
+                        """, (vote, question_id)
                     )
+                    cursor = db.execute(
+                        """
+                        INSERT INTO votes (user_id, question_id, vote)
+                        VALUES (?, ?, ?)
+                        """, (user_id, question_id, vote)
+                    )
+                    
+                # 2 possibilités :
+                # utilisateur a déjà voté et veut enléver son vote
+                # utilisateur a déja voté et veux changer son choix
 
-                     # request.form[vote] c'est une valeur qui est soit 1, soit -1
-                     #ICI, IL FAUT FAIRE ENCORE SÛREMENT LE VOTE POUR LES MESSAGES
             db.commit()
         cursor = db.execute(
         """

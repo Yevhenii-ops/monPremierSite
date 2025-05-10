@@ -26,14 +26,15 @@ FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 CREATE TABLE IF NOT EXISTS votes(
-question_id INTEGER,
-user_id INTEGER,
+question_id INTEGER NOT NULL,
+user_id INTEGER NOT NULL,
+vote INTEGER NOT NULL,
 FOREIGN KEY (question_id) REFERENCES questions(id),
 FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 CREATE TABLE IF NOT EXISTS learned_languages(
-user_id INTEGER NOTNULL,
-language TEXT NOTNULL,
-niveau_de_matrise TEXT NOTNULL
+user_id INTEGER NOT NULL,
+language TEXT NOT NULL,
+niveau_de_matrise TEXT NOT NULL
 )

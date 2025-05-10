@@ -33,8 +33,13 @@
                             <% username = user['username']%>
                         %endif
                     %endfor
-                    <h3>${username} : ${question['title']} ?</h3>
+                    <h3>${username} : ${question['title']} Note: ${question['mark']}</h3>
                     <p>${question['content']}</p>
+                    <form method = "POST">
+                    <button name="vote" value="1">Like</button>
+                    <button name="vote" value ="-1">Dislike</button>
+                    <input type="hidden" name="question-id" value="${question['id']}"> 
+                    </form>
                     <h3>Ajouter une réponse</h3>
                     <form method="POST">
                         <textarea placeholder="Votre réponse" required name="content"></textarea>
