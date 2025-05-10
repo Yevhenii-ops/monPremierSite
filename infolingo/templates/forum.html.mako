@@ -28,6 +28,7 @@
                 % for question in questions :
                 <div class="post">
                     % for user in users:
+                        <% username = "Supprimé" %>
                         %if user['id'] == question['user_id']:
                             <% username = user['username']%>
                         %endif
