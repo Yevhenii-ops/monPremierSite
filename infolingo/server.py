@@ -124,10 +124,11 @@ def forum():
                 VALUES (?, ?, ?);
                 """, (request.form.get("question_id"), user_id, request.form["content"],)
                 )
-            elif request.form.get('vote') == '1' or request.form.get('vote') == '-1':
+            elif request.form.get('vote') != None:
                 question_id = request.form.get('question-id')
                 vote = int(request.form.get('vote'))
-                if vote == has_voted(user_id, question_id, db):
+                already_voted = has_voted(user_id, question_id, db)
+                if vote == already_voted:
                     cursor = db.execute(
                         """
                         DELETE FROM votes WHERE user_id = ? and question_id = ?
@@ -139,23 +140,32 @@ def forum():
                         WHERE id = ?
                         """, (vote, question_id,)
                     )
-                else:
+                elif vote == -1*already_voted:
                     cursor = db.execute(
+                        """
+                        UPDATE questions SET mark = mark + ?
+                        WHERE id = ?
+                        """, (2*vote, question_id)
+                    )
+                    cursor = db.execute(
+                        """
+                        UPDATE votes SET vote = ?
+                        WHERE user_id = ? AND question_id = ?
+                        """, (vote, user_id, question_id,)
+                    )
+                elif already_voted == 0:
+                    cursor = db.execute(
+                    """
+                    INSERT INTO votes (user_id, question_id, vote)
+                    VALUES(?,?,?)
+                    """, (user_id, question_id, vote)
+                    )
+                    cursor=db.execute(
                         """
                         UPDATE questions SET mark = mark + ?
                         WHERE id = ?
                         """, (vote, question_id)
                     )
-                    cursor = db.execute(
-                        """
-                        INSERT INTO votes (user_id, question_id, vote)
-                        VALUES (?, ?, ?)
-                        """, (user_id, question_id, vote)
-                    )
-                    
-                # 2 possibilités :
-                # utilisateur a déjà voté et veut enléver son vote
-                # utilisateur a déja voté et veux changer son choix
 
             db.commit()
         cursor = db.execute(
