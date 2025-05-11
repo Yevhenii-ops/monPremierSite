@@ -24,6 +24,9 @@ def is_logged():
 @app.route("/")
 def accueil():
     return render_template("accueil.html.mako", is_logged = is_logged())
+@app.route("/contacts")
+def contact():
+    return render_template("contacts.html.mako")
 
 class ValidationError(ValueError):
     """Error in users provided values."""
@@ -79,7 +82,6 @@ def login():
 def logout():
     session.clear()
     return render_template("deconnexion.html.mako")
-
 
 
 def has_voted(user_id, question_id, db):
@@ -201,15 +203,14 @@ def profil():
             db = get_db()
             cursor = db.execute(
                 """
-                FROM users SELECT * WHERE user_id = ?
-                """, (session["user_id"],)
+                SELECT * FROM users WHERE user_id = ?
+                """, (user_id,)
             )
             user = cursor.fetchone()
-            cursor = get_db()
             cursor = db.execute(
                 """
-                FROM learned_languages SELECT language, niveau de matrise WHERE user_id = ?
-                """, (user_id)
+                SELECT * from learned_languages WHERE user_id = ?
+                """, (user_id,)
             )
             learned_languages = cursor.fetchall()
             return render_template("profil.hmtl.mako", user = user, learned_languages = learned_languages)
