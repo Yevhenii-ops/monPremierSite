@@ -2,7 +2,8 @@ CREATE TABLE IF NOT EXISTS users (
 id INTEGER PRIMARY KEY AUTOINCREMENT,
 username TEXT NOT NULL UNIQUE,
 password TEXT NOT NULL,
-profile_photo TEXT
+profile_photo TEXT,
+badges TEXT[]
 );
 
 CREATE TABLE IF NOT EXISTS questions(

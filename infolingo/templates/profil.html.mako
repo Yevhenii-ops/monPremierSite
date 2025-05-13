@@ -17,46 +17,28 @@
             </div>
             <div class="profile-details">
                 <h2>Langues Apprises</h2>
+                % for language in learned_languages:
+                    % if user['id'] == language['user_id']:
                 <div class="languages">
                     <div class="language-card">
-                        <h3>Python</h3>
-                        <p>Niveau : Intermédiaire</p>
+                        <h3>Langue : ${language['language']}</h3>
+                        <p>Niveau : ${language['niveau_de_matrise']}</p>
                         <div class="progress-bar">
-                            <div class="python"></div>
-                        </div>
-                    </div>
-
-                    <div class="language-card">
-                        <h3>JavaScript</h3>
-                        <p>Niveau : Débutant</p>
-                        <div class="progress-bar">
-                            <div class="javascript"></div>
-                        </div>
-                    </div>
-                    <div class="language-card">
-                        <h3>C</h3>
-                        <p>Niveau : Débutant</p>
-                        <div class="progress-bar">
-                            <div class="c"></div>
+                            <div class="${language['language']}"></div>
                         </div>
                     </div>
                 </div>
+                    % endif
+                % endfor
                 <h2>Badges</h2>
+                %for badge in user['badges']
                 <div class="badges">
                     <div class="badge">
-                        <img src="Images/badge_or.png" alt="Badge Or">
-                        <p>Badge Or</p>
-                    </div>
-                    <div class="badge">
-                        <img src="Images/badge_silver.png" alt="Badge Argent">
-                        <p>Badge Argent</p>
-                    </div>
-                    <div class="badge">
-                        <img src="Images/badge_bronze.png" alt="Badge Bronze">
-                        <p>Badge Bronze</p>
+                        <img src="Images/badge_or.png" alt="${badge}'">
+                        <p>${badge}</p>
                     </div>
                 </div>
-            <a href="deconnexion.html"><button id="déconnexion_button">Se déconnecter</button><br></a>
+            <a href="${url_for('logout')}"><button id="déconnexion_button">Se déconnecter</button><br></a>
         </div>
     </body>
 </html>
