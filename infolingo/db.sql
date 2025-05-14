@@ -39,3 +39,12 @@ user_id INTEGER NOT NULL,
 language TEXT NOT NULL,
 niveau_de_matrise TEXT NOT NULL
 )
+
+INSERT INTO learned_languages (user_id, language, niveau_de_matrise)
+VALUES (1, 'Python', 'bien');
+
+/*DROP TABLE users;
+DROP TABLE questions;
+DROP TABLE answers;
+DROP TABLE votes;
+DROP TABLE learned_languages*/

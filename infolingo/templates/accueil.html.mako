@@ -13,7 +13,6 @@
             <a href="${url_for('login')}">Connexion</a>
             <a href="${url_for('inscription')}">Inscription</a>
             <a href="${url_for('contact')}">Contact</a>
-            <a href="${url_for('profil')}">Profil</a> 
             <a href="${url_for('forum')}">Forum</a>
             % if is_logged is True:
                  <a href="${url_for('logout')}">Déconnexion</a>

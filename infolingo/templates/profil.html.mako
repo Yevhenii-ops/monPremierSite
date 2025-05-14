@@ -31,13 +31,16 @@
                     % endif
                 % endfor
                 <h2>Badges</h2>
-                %for badge in user['badges']
-                <div class="badges">
-                    <div class="badge">
-                        <img src="Images/badge_or.png" alt="${badge}'">
-                        <p>${badge}</p>
+                % if user['badges'] is not None:
+                    %for badge in user['badges']:
+                    <div class="badges">
+                        <div class="badge">
+                            <img src='../static/"${badge}".png' alt="${badge}'">
+                            <p>${badge}</p>
+                        </div>
                     </div>
-                </div>
+                %endfor
+                %endif
             <a href="${url_for('logout')}"><button id="déconnexion_button">Se déconnecter</button><br></a>
         </div>
     </body>

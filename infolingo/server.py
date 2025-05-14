@@ -203,7 +203,7 @@ def profil():
             db = get_db()
             cursor = db.execute(
                 """
-                SELECT * FROM users WHERE user_id = ?
+                SELECT * FROM users WHERE id = ?
                 """, (user_id,)
             )
             user = cursor.fetchone()
@@ -213,7 +213,7 @@ def profil():
                 """, (user_id,)
             )
             learned_languages = cursor.fetchall()
-            return render_template("profil.hmtl.mako", user = user, learned_languages = learned_languages)
+            return render_template("profil.html.mako", user = user, learned_languages = learned_languages)
 
 # Démarre l'application en mode debug.
 # Attention: ce doit être la dernière instruction du script !!!

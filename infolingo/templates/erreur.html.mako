@@ -12,8 +12,7 @@
     <nav>
         <a href="${url_for('login')}">Connexion</a>
         <a href="${url_for('inscription')}">Inscription</a>
-        <a href="contacts.html">Contact</a>
-        <a href="profil.html">Profil</a>
+        <a href="${url_for('contact')}">Contact</a>
         <a href="${url_for('forum')}">Forum</a>
     </nav>
     <p style="color: red;">${error}</p>
