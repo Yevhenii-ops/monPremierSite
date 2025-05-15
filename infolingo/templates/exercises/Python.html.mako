@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Python Exercices</title>
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" type="text/css" href="../static/style.css">
 </head>
     <body>
         <div class="header-container">
@@ -11,11 +11,9 @@
             <h1>Infolingo</h1>
         </div>
 
-        <h1>Exercices de programmation en Python</h1>
-        <h2>Ces exercices permettent de pratiquer les bases de la programmation en Python.</h2>
-
+    %if ex == 0:
         <!-- Exercice 1 -->
-        <h1>Exercice 1 : Afficher le carré d'un nombre</h1>
+        <h1>${lan} : Exercice 1 : Afficher le carré d'un nombre</h1>
         <div class="block"><p>Consigne : Écrire un programme en Python qui demande à l'utilisateur d'entrer un nombre entier, puis affiche le carré de ce nombre.</p></div>
             <div class="block_of_code">
                 <p><span class="comment"># Demander à l'utilisateur d'entrer un nombre</span></p>
@@ -28,9 +26,9 @@
             <p>Entrez un nombre : 4</p>
             <p>Le carré de 4 est : 16</p>
         </div>
-
+    %elif ex == 1:
         <!-- Exercice 2 -->
-        <h1>Exercice 2 : Vérifier si un nombre est pair ou impair</h1>
+        <h1>${lan} : Exercice 2 : Vérifier si un nombre est pair ou impair</h1>
         <div class="block"><p>Consigne : Écrire un programme en Python qui détermine si un nombre entré par l'utilisateur est pair ou impair.</p></div>
             <div class="block_of_code">
                 <p><span class="comment"># Demander à l'utilisateur d'entrer un nombre</span></p>
@@ -45,9 +43,9 @@
             <p>Entrez un nombre : 7</p>
             <p>7 est impair</p>
         </div>
-
+    %elif ex == 2:
         <!-- Exercice 3 -->
-        <h1>Exercice 3 : Calculer la somme de deux nombres</h1>
+        <h1>${lan} : Exercice 3 : Calculer la somme de deux nombres</h1>
         <div class="block"><p>Consigne : Écrire un programme en Python qui demande à l'utilisateur d'entrer deux nombres entiers, puis affiche leur somme.</p></div>
             <div class="block_of_code">
                 <p><span class="comment"># Demander à l'utilisateur d'entrer deux nombres</span></p>
@@ -62,6 +60,6 @@
             <p>Entrez le deuxième nombre : 5</p>
             <p>La somme est : 8</p>
         </div>
-
+    %endif
     </body>
 </html>

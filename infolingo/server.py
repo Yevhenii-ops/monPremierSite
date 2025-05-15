@@ -6,6 +6,7 @@ from flask_sqlite import SQLiteExtension
 from flask_sqlite import get_db
 from flask import abort
 from flask import request, redirect, url_for
+from random import randint
 os.chdir(os.path.dirname(os.path.realpath(__file__)))
 
 from flask import Flask   # Importe le type Flask.
@@ -214,6 +215,32 @@ def profil():
             )
             learned_languages = cursor.fetchall()
             return render_template("profil.html.mako", user = user, learned_languages = learned_languages)
+
+def exercise_au_hasard():
+    language = randint(0, 2)
+    exercise = randint(0, 2)
+    str_language = ""
+    match language:
+        case 0:
+            str_language = "C"
+        case 1:
+            str_language = "Javascript"
+        case 2:
+            str_language = "Python"
+    return(str_language, exercise)
+
+@app.route("/defi", methods = ["GET"])
+def defi():
+    try:
+        if "user_id" not in session: 
+            raise KeyError("Vous devez vous connécté avant d'accéder à l'exercise du jour")
+    except KeyError as e:
+        return render_template("erreur.html.mako", error = str(e))
+    else:
+        lan_ex = exercise_au_hasard()
+        return render_template("exercises/"+lan_ex[0]+".html.mako", ex = lan_ex[1], lan = lan_ex[0])
+
+        
 
 # Démarre l'application en mode debug.
 # Attention: ce doit être la dernière instruction du script !!!

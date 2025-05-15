@@ -17,6 +17,7 @@
             % if is_logged is True:
                  <a href="${url_for('logout')}">Déconnexion</a>
                  <a href="${url_for('profil')}">Profil</a>
+                 <a href = "${url_for('defi')}">Exercise du jour</a>
             %endif
 
         </nav>
