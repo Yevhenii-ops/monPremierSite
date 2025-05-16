@@ -23,7 +23,6 @@
                     <textarea placeholder="Votre message" required name="content"></textarea>
                     <input type="submit" value="Publier" name="ask">
                 </form>
-                <% i = 1%>
             % if questions is not None:
                 % for question in questions :
                 <div class="post">
@@ -47,29 +46,29 @@
                     <h3>Ajouter une réponse</h3>
                     <form method="POST">
                         <textarea placeholder="Votre réponse" required name="content"></textarea>
-                        <input type="hidden" name="question_id" value="${i}">
+                        <input type="hidden" name="question_id" value="${question['id']}">
                         <input type="submit" value="Publier" name="answer">
                     </form>
                         % if answers is not None:
-                                <% j = 1%>
                             % for answer in answers:
                                 % if answer['question_id'] == question['id']:
                                     % for user in users:
-                                        % if user['id'] == question['user_id']:
+                                        % if user['id'] == answer['user_id']:
                                             <% username = user['username']%>
-                                    %endif
+                                        %endif
                                     % endfor
                                     <div class="reply">
-                                        <p><strong>${username} : </strong>${answer['content']}</p>                  
+                                        <p><strong>${username} : </strong>${answer['content']} (Note : ${answer['mark']})</p>                                           
+                                            <form method="POST">
+                                                <button name="vote-answer" value="1">Like</button>
+                                                <button name="vote-answer" value="-1">Dislike</button>
+                                                <input type="hidden" name="answer-id" value="${answer['id']}">
+                                            </form>        
                                     </div>
-                                <% j = j + 1%>
                                 % endif
                             % endfor
                         % endif
-
-                        ## Il faut rajouter le button qui permet de répondre à une question.
                 </div>
-                    <% i = i + 1%>
                 % endfor
             % endif
         </div>

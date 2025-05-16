@@ -97,6 +97,15 @@ def has_voted(user_id, question_id, db):
         return 0
     else:
         return int(row['vote'])
+def has_voted_answer(user_id, answer_id, db):
+    cursor = db.execute(
+        "SELECT vote FROM answer_votes WHERE user_id = ? AND answer_id = ?",
+        (user_id, answer_id)
+    )
+    row = cursor.fetchone()
+    return row['vote'] if row else 0
+
+
 
 @app.route("/forum", methods = ["GET", "POST"])
 def forum():
@@ -168,6 +177,37 @@ def forum():
                         UPDATE questions SET mark = mark + ?
                         WHERE id = ?
                         """, (vote, question_id)
+                    )
+            elif request.form.get('vote-answer') is not None:
+                answer_id = request.form.get('answer-id')
+                vote = int(request.form.get('vote-answer'))
+                already_voted = has_voted_answer(user_id, answer_id, db)
+                if vote == already_voted:
+                    db.execute(
+                        "DELETE FROM answer_votes WHERE user_id = ? AND answer_id = ?",
+                        (user_id, answer_id)
+                    )
+                    db.execute(
+                        "UPDATE answers SET mark = mark - ? WHERE id = ?",
+                        (vote, answer_id)
+                    )
+                elif vote == -1 * already_voted:
+                    db.execute(
+                        "UPDATE answers SET mark = mark + ? WHERE id = ?",
+                        (2 * vote, answer_id)
+                    )
+                    db.execute(
+                        "UPDATE answer_votes SET vote = ? WHERE user_id = ? AND answer_id = ?",
+                        (vote, user_id, answer_id)
+                    )
+                elif already_voted == 0:
+                    db.execute(
+                        "INSERT INTO answer_votes (user_id, answer_id, vote) VALUES (?, ?, ?)",
+                        (user_id, answer_id, vote)
+                    )
+                    db.execute(
+                        "UPDATE answers SET mark = mark + ? WHERE id = ?",
+                        (vote, answer_id)
                     )
 
             db.commit()

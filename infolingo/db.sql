@@ -34,6 +34,15 @@ FOREIGN KEY (question_id) REFERENCES questions(id),
 FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
+CREATE TABLE answer_votes (
+    user_id INTEGER,
+    answer_id INTEGER,
+    vote INTEGER,
+    FOREIGN KEY (answer_id) REFERENCES answers(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+
 CREATE TABLE IF NOT EXISTS learned_languages(
 user_id INTEGER NOT NULL,
 language TEXT NOT NULL,
