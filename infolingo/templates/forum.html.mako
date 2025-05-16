@@ -27,12 +27,16 @@
             % if questions is not None:
                 % for question in questions :
                 <div class="post">
-                    % for user in users:
-                        <% username = "Supprimé" %>
+                %if users is not None:
+                    %for user in users:
                         %if user['id'] == question['user_id']:
-                            <% username = user['username']%>
+                            <% username = user['username'] %> 
+                            <% break %>
+                        %else:
+                            <% username = "Supprimé(e)" %>
                         %endif
                     %endfor
+                %endif
                     <h3>${username} : ${question['title']} Note: ${question['mark']}</h3>
                     <p>${question['content']}</p>
                     <form method = "POST">
