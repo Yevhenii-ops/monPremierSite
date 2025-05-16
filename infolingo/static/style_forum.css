@@ -1,0 +1,148 @@
+/* Updated style.css: Matches screenshot color palette */
+
+/* Reset and Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: #6cfaf8; /* light cyan */
+  color: #1e2f3c;
+  padding: 30px;
+  font-size: 16px;
+}
+
+/* Header */
+.header-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.logo
+{
+    width: 120px;
+    height: 135px;
+    padding-left: 10px;
+    padding-top: 10px;
+    transition: transform .2s; /* Animation */
+}
+.logo:hover {
+    transform: scale(1.15); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #1e2f3c;
+  flex-grow: 1;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Container */
+.container {
+  background-color: #a1fb57; /* lime green */
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.container > h1 {
+  font-size: 1.8rem;
+  color: #1e2f3c;
+  margin-bottom: 20px;
+}
+
+/* Forms */
+form {
+  margin-bottom: 20px;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin: 10px 0;
+  font-size: 1rem;
+  background-color: #fdfdfd;
+  transition: border 0.3s;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: #1e2f3c;
+  outline: none;
+}
+
+input[type="submit"],
+button {
+  background-color: #6dfaff; /* light blue */
+  color: #1e2f3c;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 8px;
+  margin-right: 8px;
+}
+
+input[type="submit"]:hover,
+button:hover {
+  background-color: #4dd3d0;
+}
+
+/* Post and Replies */
+.post {
+  background-color: #1e2f3c; /* dark slate blue */
+  color: #d7ff4a; /* lime greenish yellow text */
+  border: none;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 30px;
+}
+
+.reply {
+  background-color: #1e2f3c; /* same as post */
+  color: #ffffff;
+  border-left: 4px solid #6dfaff;
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+h3 {
+  font-size: 1.2rem;
+  color: #d7ff4a;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.reply p strong {
+  color: #d7ff4a;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .logo {
+    height: 50px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+}

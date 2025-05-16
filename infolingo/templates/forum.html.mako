@@ -8,7 +8,7 @@
     <head>
         <meta charset="utf-8">
         <title>accueil</title>
-        <link rel="stylesheet" type="text/css" href="../static/style.css">
+    <link rel="stylesheet" href="../static/style_forum.css">
     </head>
     <body>
         <div class="header-container">
