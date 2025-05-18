@@ -23,7 +23,7 @@
             </label>
             <button type="Submit">S'inscrire</button><br> <!--PROBLEME : le button n'est pas fixée-->
             <p>Déja inscrit ? Veuillez venir sur la page de connexion.</p>
-            <a href="connexion.html">Connexion</a> 
+            <a href="${url_for('login')}">Connexion</a> 
         </form> 
     </body>
 </html>

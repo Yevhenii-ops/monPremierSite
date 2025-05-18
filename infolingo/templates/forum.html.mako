@@ -8,7 +8,7 @@
     <head>
         <meta charset="utf-8">
         <title>accueil</title>
-    <link rel="stylesheet" href="../static/style_forum.css">
+    <link rel="stylesheet" href="../static/style.css">
     </head>
     <body>
         <div class="header-container">
@@ -23,6 +23,7 @@
                     <textarea placeholder="Votre message" required name="content"></textarea>
                     <input type="submit" value="Publier" name="ask">
                 </form>
+
             % if questions is not None:
                 % for question in questions :
                 <div class="post">

@@ -11,6 +11,6 @@
         </div>
         <h1>Déconnexion</h1>
         <div class="block"><p>Vous avez été déconnecté avec succès.</p></div>
-        <button onclick="window.location.href='${url_for('accueil')}'">Retourner à la page de connexion</button>
+        <button onclick="window.location.href='${url_for('login')}'">Retourner à la page de connexion</button>
     </body>
 </html>

@@ -57,12 +57,12 @@ def inscription():
             db.rollback()
 
 
-@app.route("/login", methods = ["GET", "POST"])
+@app.route("/connexion", methods = ["GET", "POST"])
 def login():
     if 'user_id' in session:
         return redirect(url_for('accueil'))
     if request.method == "GET":
-        return render_template("login.html.mako")
+        return render_template("connexion.html.mako")
     elif request.method == "POST":
         db = get_db()
         try:
@@ -77,7 +77,7 @@ def login():
             session['user_id'] = user['id']
             return redirect(url_for('accueil'), code=303)
         except ValidationError as e:
-            return render_template("login.html.mako", error=str(e))
+            return render_template("connexion.html.mako", error=str(e))
 
 @app.route("/logout")
 def logout():

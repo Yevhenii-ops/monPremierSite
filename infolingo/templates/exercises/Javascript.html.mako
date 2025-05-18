@@ -6,10 +6,9 @@
     <link rel="stylesheet" type="text/css" href="../static/style.css">
 </head>
 <body>
-<div class="header-container">
-    <a href="../accueil.html"><img src="../Images/logo.png" alt="logo" class="logo"></a>
-    <h1>Infolingo</h1>
-</div>
+        <div class="header-container">
+            <a href="${url_for('accueil')}"><img src="../static/logo.png" alt="logo" class="logo"></a><h1>Infolingo</h1>
+        </div>
 
 %if ex == 0:
     <!-- Exercice 1 -->

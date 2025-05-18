@@ -10,8 +10,11 @@
             <a href="${url_for('accueil')}"><img src="../static/logo.png" alt="logo" class="logo"></a><h1>Infolingo</h1>
         </div>
         <nav>
-            <a href="${url_for('login')}">Connexion</a>
-            <a href="${url_for('inscription')}">Inscription</a>
+
+            % if is_logged is False:
+                <a href="${url_for('inscription')}">Inscription</a>
+                <a href="${url_for('login')}">Connexion</a>
+            %endif
             <a href="${url_for('contact')}">Contact</a>
             <a href="${url_for('forum')}">Forum</a>
             % if is_logged is True:

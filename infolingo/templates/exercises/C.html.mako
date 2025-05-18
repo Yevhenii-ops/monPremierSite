@@ -6,6 +6,9 @@
         <link rel="stylesheet" type="text/css" href="../static/style.css">
     </head>
     <body>
+        <div class="header-container">
+            <a href="${url_for('accueil')}"><img src="../static/logo.png" alt="logo" class="logo"></a><h1>Infolingo</h1>
+        </div>
     % if ex == 0:
         <!-- Exercice 1 -->
         <h1>${lan} : Exercice 1 : Afficher le carré d'un nombre</h1>
