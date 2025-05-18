@@ -31,13 +31,6 @@
         <h2>
             Vous pouvez apprendre soit le C, soit le Python, soit le JavaScript.<br>De plus, à la fin de chaque chapitre d'apprentissage, vous pourrez vous exercer et consulter les solutions des exercices.
         </h2>
-        <div class="language-select-container">
-            <ul>
-                <li><a href="C/C.html">C</a></li>
-                <li><a href="Python/python.html">Python</a></li>
-                <li><a href="Javascript/javascript.html">JavaScript</a></li>
-            </ul>
-        </div>
         <footer>
                 <div class="social-buttons">
                     <a href="https://www.facebook.com" target="_blank">
@@ -48,9 +41,6 @@
                     </a>
                     <a href="https://www.telegram.org" target="_blank">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
-                    </a>
-                    <a href="https://discord.com" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Discord_blue.jpg/640px-Discord_blue.jpg" alt="Discord">
                     </a>
                 </div>
             </div>
