@@ -81,6 +81,12 @@ def login():
 
 @app.route("/logout")
 def logout():
+    try:
+        if login() == False:
+            raise KeyError("Vous n'êtes pas connecté.")
+    except KeyError as e:
+        return render_template("connexion.html.mako", error=str(e))
+        
     session.clear()
     return render_template("deconnexion.html.mako")
 
@@ -109,7 +115,6 @@ def has_voted_answer(user_id, answer_id, db):
 
 @app.route("/forum", methods = ["GET", "POST"])
 def forum():
-    error = None
     questions = {}
     answers = {}
     db = get_db()
