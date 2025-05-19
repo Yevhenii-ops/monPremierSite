@@ -37,7 +37,7 @@
                         %endif
                     %endfor
                 %endif
-                    <h3>${username} : ${question['title']} Note: ${question['mark']}</h3>
+                    <h3>${username} : ${question['title']} Note : ${question['mark']} Date : ${question['date']}</h3>
                     <p>${question['content']}</p>
                     <form method = "POST">
                     <button name="vote" value="1">Like</button>

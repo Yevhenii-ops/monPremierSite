@@ -132,7 +132,7 @@ def forum():
                 """
                 INSERT INTO questions (user_id, title, content, date)
                 VALUES(?, ?, ?, ?);
-                """, (user_id, request.form["title"], request.form["content"], datetime.datetime.now()) 
+                """, (user_id, request.form["title"], request.form["content"], datetime.datetime.today()) 
                 ) 
             elif request.form.get('answer') == 'Publier':
                 cursor = db.execute(
